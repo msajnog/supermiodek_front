@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <!-- build:css(.tmp) styles/supermiodek.css -->
+        <link rel="stylesheet" href="styles/supermiodek.css">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="supermiodek">
+        <header>
+            <!-- <div id="headerTop" class="hidden-xs">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a class="logo" href="#"><img src="/images/logo.png" alt="Supermiodek.pl" /></a>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="info-box fa fa-phone">
+                                <p>Phone:</p><a href="callto:x">+1 959 603 6035 (585-Order)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Supermiodek.pl" />Supermiodek</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#/shop">Sklep</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div id="mainBanner" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#mainBanner" data-slide-to="0" class="active"></li>
+                <li data-target="#mainBanner" data-slide-to="1"></li>
+                <li data-target="#mainBanner" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="images/slide01.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <img src="images/slide02.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <img src="images/slide03.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+
+        <ui-view></ui-view>
+
+
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/shop.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

@@ -1,0 +1,93 @@
+
+header {
+    // #headerTop {
+    //     background: $beige;
+    //     padding: 10px 0;
+    //
+    //     .logo {
+    //         padding-left: 20px;
+    //
+    //         img {
+    //             max-width: 80px;
+    //         }
+    //     }
+    //
+    //     .info-box {
+    //         position: relative;
+    //         float: right;
+    //         padding-right: 20px;
+    //         padding-left: 30px;
+    //         margin-top: 30px;
+    //
+    //         p, a {
+    //             font-family: $primary-font;
+    //             color: $grey;
+    //             font-size: 1.2rem;
+    //             margin-bottom: 0;
+    //         }
+    //
+    //         &:before {
+    //             position: absolute;
+    //             left: 0;
+    //             font-size: 2.9rem;
+    //             color: $red;
+    //         }
+    //     }
+    // }
+
+    .navbar {
+        height: $navbar-height;
+        background: $red;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
+
+        .navbar-header {
+            .navbar-brand {
+                height: auto;
+                font-size: 2.0rem;
+                color: #fff;
+                text-transform: uppercase;
+                padding-top: 10px;
+                padding-bottom: 10px;
+
+                img {
+                    display: inline-block;
+                    max-width: 50px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .navbar-collapse {
+            .nav {
+                float: none;
+                text-align: center;
+
+                li {
+                    float: none;
+                    display: inline-block;
+
+                    a {
+                        line-height: 31px;
+                        font-size: 2.4rem;
+                        color: #fff;
+                        text-transform: uppercase;
+                        padding: 20px;
+                        @extend .transition;
+
+                        &:hover {
+                            color: #222222;
+                        }
+                    }
+
+                    &.active {
+                        a {
+                            background: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

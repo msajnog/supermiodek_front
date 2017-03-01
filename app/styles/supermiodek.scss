@@ -1,0 +1,12 @@
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
+
+@import "_include/_variables";
+@import "_include/_helpers";
+
+@import "supermiodek/_header";
+@import "supermiodek/_common";
+@import "supermiodek/_footer";
+@import "supermiodek/_forms";
+@import "supermiodek/_home";
+@import "supermiodek/_shop";

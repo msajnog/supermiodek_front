@@ -1,0 +1,62 @@
+.form-control {
+    height: $input-height;
+    line-height: $input-height;
+    border-radius: 0;
+    border-color: $grey;
+    box-shadow: none;
+
+    &:focus {
+        border-color: $yellow;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(205, 182, 34, 0.8);
+    }
+}
+
+.quantity {
+    font-size: 0;
+
+    button {
+        display: inline-block;
+        top: 0;
+        height: $input-height;
+        font-size: 1.8rem;
+        color: #fff;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 0;
+        vertical-align: top;
+        background: $red;
+        @extend .transition;
+
+        &:hover {
+            background: $blue;
+        }
+    }
+
+    input {
+        display: inline-block;
+        width: 50px;
+        font-size: 1.6rem;
+        text-align: center;
+        border-left: 0;
+        border-right: 0;
+        border-color: $red;
+
+        &:focus {
+            border-color: $red;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(244, 66, 54, 0.8);
+        }
+    }
+
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+textarea {
+    resize: vertical;
+}
