@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAAA,IAAK;EACH,UAAU,EAAE,GAAG;EACf,KAAK,EAAE,IAAI",
-"sources": ["../../app/styles/scss/supermiodek/test.scss"],
-"names": [],
-"file": "test.css"
-}
