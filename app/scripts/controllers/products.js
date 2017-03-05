@@ -42,5 +42,5 @@ angular.module('supermiodek')
             price: 16.99,
             image: 'product2.jpg'
         },
-    ]
+    ];
 }]);

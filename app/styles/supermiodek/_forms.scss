@@ -60,3 +60,14 @@
 textarea {
     resize: vertical;
 }
+
+label {
+    em {
+        color: $red;
+    }
+}
+
+.error-msg {
+    font-size: 1.2rem;
+    color: $error;
+}
