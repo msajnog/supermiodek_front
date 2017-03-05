@@ -9,5 +9,7 @@
  */
 angular.module('supermiodek')
   .controller('HomeCtrl', function () {
-    console.log('HomeCtrl');
+
+
+    
   });

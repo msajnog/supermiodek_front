@@ -7,7 +7,7 @@ angular.
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $stateProvider.state('home', {
+        $stateProvider.state('/', {
             url: '/',
             templateUrl: 'views/home.html',
             controller: 'HomeCtrl'

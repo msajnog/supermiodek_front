@@ -27,41 +27,11 @@
             </div>
             <div class="clearfix"></div>
             <h4 class="red">Wybierz produkty</h4>
-            <ul class="products-list">
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="price">18,99zł</div>
-                    <div class="quantity">
-                        <button type="button" class="glyphicon glyphicon-minus asc"></button>
-                        <input type="number" min="0" max="999" name="quantity" value="0" class="form-control">
-                        <button type="button" class="glyphicon glyphicon-plus dec"></button>
-                    </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="price">18,99zł</div>
-                    <div class="quantity">
-                        <button type="button" class="glyphicon glyphicon-minus asc"></button>
-                        <input type="number" min="0" max="999" name="quantity" value="0" class="form-control">
-                        <button type="button" class="glyphicon glyphicon-plus dec"></button>
-                    </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="price">18,99zł</div>
-                    <div class="quantity">
-                        <button type="button" class="glyphicon glyphicon-minus asc"></button>
-                        <input type="number" min="0" max="999" name="quantity" value="0" class="form-control">
-                        <button type="button" class="glyphicon glyphicon-plus dec"></button>
-                    </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="price">18,99zł</div>
+            <ul class="products-list" ng-controller="ProductsCtrl">
+                <li class="col-xs-12 col-sm-6 col-md-3 product-item" ng-repeat="product in products">
+                    <a href="#" class="img"><img src="images/{{product.image}}" alt="{{product.name}}" /></a>
+                    <a href="#" class="name">{{product.name}}</a>
+                    <div class="price">{{product.price | currency}}</div>
                     <div class="quantity">
                         <button type="button" class="glyphicon glyphicon-minus asc"></button>
                         <input type="number" min="0" max="999" name="quantity" value="0" class="form-control">

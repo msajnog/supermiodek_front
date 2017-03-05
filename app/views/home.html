@@ -61,50 +61,15 @@
     </div>
 </section>
 
-<section class="main-page-section products-section">
+<section id="anchorproducts" class="main-page-section products-section" ng-controller="ProductsCtrl">
     <div class="container">
         <h3>Products</h3>
         <div class="row">
             <ul class="products-list">
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product2.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product2.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product2.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product1.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
-                </li>
-                <li class="col-xs-12 col-sm-6 col-md-3 product-item">
-                    <a href="#" class="img"><img src="images/product2.jpg" alt="" /></a>
-                    <a href="#" class="name">Product name</a>
-                    <div class="short-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, </div>
+                <li class="col-xs-12 col-sm-6 col-md-3 product-item" ng-repeat="product in products">
+                    <a href="#" class="img"><img src="images/{{product.image}}" alt="{{product.name}}" /></a>
+                    <a href="#" class="name">{{product.name}}</a>
+                    <div class="short-desc">{{product.shortDescription}}</div>
                 </li>
             </ul>
         </div>

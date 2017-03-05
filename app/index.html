@@ -13,21 +13,7 @@
         <!-- endbuild -->
     </head>
     <body ng-app="supermiodek">
-        <header>
-            <!-- <div id="headerTop" class="hidden-xs">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a class="logo" href="#"><img src="/images/logo.png" alt="Supermiodek.pl" /></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="info-box fa fa-phone">
-                                <p>Phone:</p><a href="callto:x">+1 959 603 6035 (585-Order)</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+        <header ng-controller="HeaderCtrl">
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -42,11 +28,11 @@
 
                     <div class="collapse navbar-collapse" id="mainNav">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#/shop">Sklep</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a ui-sref="/">Home</a></li>
+                            <li><a ui-sref="#">Products</a></li>
+                            <li><a ui-sref="shop">Sklep</a></li>
+                            <li><a ui-sref="#">Gallery</a></li>
+                            <li><a ui-sref="#">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,12 +78,16 @@
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
+        <script src="bower_components/angular-i18n/angular-locale_pl-pl.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/products.js"></script>
         <script src="scripts/controllers/shop.js"></script>
         <!-- endbuild -->
     </body>

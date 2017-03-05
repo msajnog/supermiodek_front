@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name filmwebFrontApp.controller:ShopCtrl
+ * @name supermiodek.controller:ShopCtrl
  * @description
  * # ShopCtrl
- * Controller of the filmwebFrontApp
+ * Controller of the supermiodek
  */
 angular.module('supermiodek')
   .controller('ShopCtrl', function () {
-    console.log('ShopCtrl');
+      
   });
