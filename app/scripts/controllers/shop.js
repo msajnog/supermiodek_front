@@ -60,6 +60,7 @@ angular.module('supermiodek')
           });
 
           product.quantity += 1;
+          $scope.checkProducts();
       };
 
       $scope.decrease = function (id) {
@@ -70,11 +71,37 @@ angular.module('supermiodek')
           if (product.quantity > 0) {
               product.quantity -= 1;
           }
+
+          $scope.checkProducts();
+      };
+
+      $scope.checkProducts = function () {
+          $scope.productsRequired = true;
+
+          $scope.order.products.forEach(function (element) {
+              if (element.quantity > 0) {
+                  $scope.productsRequired = false;
+                  return;
+              }
+          });
       };
 
       $scope.placeOrder = function () {
           console.log($scope.placeOrderForm.$valid);
           console.log($scope.order);
+
+          if (!$scope.placeOrderForm.$valid) {
+              $scope.formInvalid = true;
+              return;
+          } else {
+              $scope.formInvalid = false;
+          }
+
+          $scope.checkProducts();
+
+          if ($scope.productsRequired) {
+              return;
+          }
       };
 
   }]);
