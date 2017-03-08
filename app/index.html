@@ -29,17 +29,17 @@
                     <div class="collapse navbar-collapse" id="mainNav">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a ui-sref="/">Home</a></li>
-                            <li><a ui-sref="#">Products</a></li>
+                            <li><a ui-sref="#">Produkty</a></li>
                             <li><a ui-sref="shop">Sklep</a></li>
-                            <li><a ui-sref="#">Gallery</a></li>
-                            <li><a ui-sref="#">Contact</a></li>
+                            <li><a ui-sref="#">Galeria</a></li>
+                            <li><a ui-sref="#">Kontakt</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <div id="mainBanner" class="carousel slide" data-ride="carousel">
+        <div id="mainBanner" class="carousel slide" data-ride="carousel" ng-if="$state.current.data.loadMainBanner" ng-cloak>
             <ol class="carousel-indicators">
                 <li data-target="#mainBanner" data-slide-to="0" class="active"></li>
                 <li data-target="#mainBanner" data-slide-to="1"></li>
@@ -79,15 +79,18 @@
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
+        <script src="bower_components/angular-i18n/angular-locale_pl-pl.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/constants.js"></script>
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/products.js"></script>
         <script src="scripts/controllers/shop.js"></script>
+        <script src="scripts/services/productservice.js"></script>
         <!-- endbuild -->
     </body>
 </html>

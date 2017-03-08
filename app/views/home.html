@@ -67,13 +67,13 @@
         <div class="row">
             <ul class="products-list">
                 <li class="col-xs-12 col-sm-6 col-md-3 product-item" ng-repeat="product in products">
-                    <a href="#" class="img"><img src="images/{{product.image}}" alt="{{product.name}}" /></a>
+                    <a href="#" class="img"><img src="{{media_path}}{{product.image}}" alt="{{product.name}}" /></a>
                     <a href="#" class="name">{{product.name}}</a>
                     <div class="short-desc">{{product.shortDescription}}</div>
                 </li>
             </ul>
         </div>
-        <a href="#" class="btn btn-primary place-order">Złóż zamówienie</a>
+        <a href="#/shop" class="btn btn-primary place-order">Złóż zamówienie</a>
     </div>
 </section>
 

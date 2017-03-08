@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.name.$dirty && placeOrderForm.name.$error.required, 'has-success': placeOrderForm.name.$dirty && !placeOrderForm.name.$error.required}">
-                    <label for="name" class="control-label">Imię</label>
+                    <label for="name" class="control-label">Imię<em>*</em></label>
                     <input id="name" type="text" ng-model="order.client.name" name="name" class="form-control" placeholder="Imię" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.name.$dirty && !placeOrderForm.name.$error.required"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.name.$dirty && placeOrderForm.name.$error.required"></span>
@@ -12,7 +12,7 @@
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.surname.$dirty && placeOrderForm.surname.$error.required, 'has-success': placeOrderForm.surname.$dirty && !placeOrderForm.surname.$error.required}">
-                    <label for="surname" class="control-label">Nazwisko</label>
+                    <label for="surname" class="control-label">Nazwisko<em>*</em></label>
                     <input id="surname" name="surname" type="text" ng-model="order.client.surname" class="form-control" placeholder="Nazwisko" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.surname.$dirty && !placeOrderForm.surname.$error.required"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.surname.$dirty && placeOrderForm.surname.$error.required"></span>
@@ -22,7 +22,7 @@
             <div class="clearfix"></div>
             <div class="col-xs-12  col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.email.$dirty && (placeOrderForm.email.$error.required || placeOrderForm.email.$error.email), 'has-success': placeOrderForm.email.$dirty && !placeOrderForm.email.$error.required}">
-                    <label for="email" class="control-label">Adres e-mail</label>
+                    <label for="email" class="control-label">Adres e-mail<em>*</em></label>
                     <input id="email" type="email" name="email" ng-model="order.client.email" class="form-control" placeholder="Adres e-mail" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.email.$dirty && !placeOrderForm.email.$error.required"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.email.$dirty && placeOrderForm.email.$error.required"></span>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-xs-12  col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.phone.$dirty && (placeOrderForm.phone.$error.required || !placeOrderForm.phone.$valid), 'has-success': placeOrderForm.phone.$dirty && !placeOrderForm.phone.$error.required}">
-                    <label for="phone" class="control-label">Telefon</label>
+                    <label for="phone" class="control-label">Telefon<em>*</em></label>
                     <input id="phone" name="phone" type="tel" ng-model="order.client.phone" ng-pattern="'\\d+'" class="form-control" placeholder="Telefon" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.phone.$dirty && !placeOrderForm.phone.$error.required"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.phone.$dirty && placeOrderForm.phone.$error.required"></span>
@@ -43,7 +43,7 @@
             <div class="clearfix"></div>
             <div class="col-xs-12  col-sm-6" ng-class="{'has-error': placeOrderForm.shipping.$dirty && placeOrderForm.shipping.$error.required, 'has-success': placeOrderForm.shipping.$dirty && !placeOrderForm.shipping.$error.required}">
                 <div class="form-group has-feedback">
-                    <label for="shipping" class="control-label">Adres dostawy</label>
+                    <label for="shipping" class="control-label">Adres dostawy<em>*</em></label>
                     <textarea id="shipping" name="shipping" ng-model="order.client.shipment" class="form-control" placeholder="Adres dostawy" required></textarea>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.shipping.$dirty && !placeOrderForm.shipping.$error.required"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="placeOrderForm.shipping.$dirty && placeOrderForm.shipping.$error.required"></span>
@@ -60,7 +60,7 @@
             <h4 class="red">Wybierz produkty</h4>
             <ul class="products-list">
                 <li class="col-xs-12 col-sm-6 col-md-3 product-item" ng-repeat="product in order.products">
-                    <a href="#" class="img"><img src="images/{{product.image}}" alt="{{product.name}}" /></a>
+                    <a href="#" class="img"><img src="{{media_path}}{{product.image}}" alt="{{product.name}}" /></a>
                     <a href="#" class="name">{{product.name}}</a>
                     <div class="price">{{product.price | currency}}</div>
                     <div class="quantity">
