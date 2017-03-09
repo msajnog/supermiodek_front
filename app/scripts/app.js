@@ -4,6 +4,7 @@ angular.
     module('supermiodek', [
     'ngResource',
     'ui.router',
+    'angularFileUpload'
     ])
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -53,4 +54,4 @@ angular.
     // to active whenever 'contacts.list' or one of its decendents is active.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-}])
+}]);
