@@ -19,18 +19,41 @@ angular.module('supermiodek')
     });
 
     $scope.uploader = new FileUploader({
-        queueLimit: 1
+        queueLimit: 1,
+        url: 'http://127.0.0.1:8080/api/upload/',
+        // removeAfterUpload: true
     });
 
-    $scope.saveProduct = function () {
-        console.log($scope.product);
+    // $scope.uploader.onProgressItem = function (item, progress) {
+        // console.log(item);
+        // console.log(progress);
+    // };
 
+    $scope.saveProduct = function () {
         if (!$scope.addProductForm.$valid) {
             $scope.formInvalid = true;
             return;
         } else {
             $scope.formInvalid = false;
         }
+
+        $scope.uploader.queue[0].upload()
+
+        $scope.uploader.onError = function (err) {
+          return;
+        };
+
+        $scope.uploader.onSuccessItem = function (item, response, status, headers) {
+          if (response.status) {
+            $scope.product.image = response.path;
+
+            productService.save($scope.product, function (response) {
+                console.log(response);
+            });
+          }
+        };
+
+        console.log($scope.product);
     };
 
 }]);

@@ -13,8 +13,8 @@ angular.module('supermiodek')
       'get': {
         method: 'GET',
       },
-    //   'save': {
-    //     method: 'POST',
-    //   }
+      'save': {
+        method: 'POST',
+      }
     });
   }]);
