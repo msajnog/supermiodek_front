@@ -11,6 +11,7 @@ angular.module('supermiodek')
 .controller('ProductsCtrl', ['$scope', 'productService', 'FileUploader', 'MEDIA', function ($scope, productService, FileUploader, MEDIA) {
     $scope.media_path = MEDIA.url;
     $scope.product = {};
+    $scope.regex = '\\d+';
 
     productService.get(function(response) {
         if (response.data) {
@@ -24,12 +25,15 @@ angular.module('supermiodek')
         // removeAfterUpload: true
     });
 
-    // $scope.uploader.onProgressItem = function (item, progress) {
-        // console.log(item);
-        // console.log(progress);
-    // };
+    $scope.removeItem = function () {
+        $scope.uploader.queue[0].remove();
+        angular.element("input[type='file']").val('');
+    };
 
     $scope.saveProduct = function () {
+        $scope.submitSuccess = false;
+        var file = $scope.uploader.queue[0];
+
         if (!$scope.addProductForm.$valid) {
             $scope.formInvalid = true;
             return;
@@ -37,7 +41,13 @@ angular.module('supermiodek')
             $scope.formInvalid = false;
         }
 
-        $scope.uploader.queue[0].upload()
+        if (file) {
+            $scope.uploader.queue[0].upload()
+            $scope.imageInvalid = false;
+        } else {
+            $scope.imageInvalid = true;
+            return;
+        }
 
         $scope.uploader.onError = function (err) {
           return;
@@ -49,6 +59,11 @@ angular.module('supermiodek')
 
             productService.save($scope.product, function (response) {
                 console.log(response);
+                $scope.product = {};
+                $scope.removeItem();
+
+                $scope.submitSuccess = true;
+                $scope.successMessage = response.message;
             });
           }
         };
