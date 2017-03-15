@@ -11,7 +11,7 @@ angular.module('supermiodek')
 .controller('ProductsCtrl', ['$scope', 'productService', 'FileUploader', 'MEDIA', function ($scope, productService, FileUploader, MEDIA) {
     $scope.media_path = MEDIA.url;
     $scope.product = {};
-    $scope.regex = '\\d+';
+    $scope.regex = '^\d+,\d+$';
 
     productService.get(function(response) {
         if (response.data) {
