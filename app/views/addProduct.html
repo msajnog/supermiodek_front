@@ -13,7 +13,7 @@
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': (addProductForm.price.$dirty && addProductForm.price.$error.required) || (addProductForm.price.$dirty && addProductForm.price.$error.pattern), 'has-success': addProductForm.price.$dirty && !addProductForm.price.$error.required && !addProductForm.price.$error.pattern}">
                     <label for="price" class="control-label">Cena<em>*</em></label>
-                    <input id="price" type="text" ng-model="product.price" name="price" class="form-control" placeholder="Cena" ng-pattern="/^[0-9]+([,][0-9]+)?$/" required>
+                    <input id="price" type="text" ng-model="product.price" name="price" class="form-control" placeholder="Cena" ng-pattern="/^[0-9]+([.][0-9]+)?$/" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addProductForm.price.$dirty && !addProductForm.price.$error.required && !addProductForm.price.$error.pattern"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(addProductForm.price.$dirty && addProductForm.price.$error.required) || (addProductForm.price.$dirty && addProductForm.price.$error.pattern)"></span>
                     <span class="error-msg" ng-show="addProductForm.price.$dirty && addProductForm.price.$error.required">To pole jest wymagane</span>
@@ -40,20 +40,38 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group has-feedback" ng-class="{'has-error': addProductForm.status.$dirty && addProductForm.status.$error.required, 'has-success': addProductForm.status.$dirty && !addProductForm.status.$error.required}">
+                    <label for="status">Status<em>*</em></label>
+                    <select name="status" id="status" ng-model="product.status" class="form-control" required>
+                        <option value>--Wybierz--</option>
+                        <option value="1">Włączone</option>
+                        <option value="0">Wyłączone</option>
+                    </select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addProductForm.status.$dirty && !addProductForm.status.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addProductForm.status.$dirty && addProductForm.status.$error.required"></span>
+                    <span class="error-msg" ng-show="addProductForm.status.$dirty && addProductForm.status.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group has-feedback" ng-class="{'has-error': addProductForm.availability.$dirty && addProductForm.availability.$error.required, 'has-success': addProductForm.availability.$dirty && !addProductForm.availability.$error.required}">
+                    <label for="availability">Stan magazynowy<em>*</em></label>
+                    <input type="number" name="availability" id="availability" ng-model="product.availability" min="0" class="form-control" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addProductForm.availability.$dirty && !addProductForm.availability.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addProductForm.availability.$dirty && addProductForm.availability.$error.required"></span>
+                    <span class="error-msg" ng-show="addProductForm.availability.$dirty && addProductForm.availability.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback">
                     <label for="image" class="control-label">Zdjęcie<em>*</em></label>
                     <input id="image" type="file" ng-model="product.image" name="image" nv-file-select="" uploader="uploader" class="form-control" accept="image/*">
                 </div>
-            </div>
-            <div class="col-xs-12 upload-section">
-                <table class="table">
+                <table class="table upload-section">
                     <thead>
                         <tr>
                             <th width="50%">Nazwa</th>
                             <th ng-show="uploader.isHTML5">Rozmiar</th>
-                            <th ng-show="uploader.isHTML5">Postęp</th>
-                            <th>Status</th>
                             <th>Opcje</th>
                         </tr>
                     </thead>
@@ -64,16 +82,6 @@
                                 <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
                             </td>
                             <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                            <td ng-show="uploader.isHTML5">
-                                <div class="progress" style="margin-bottom: 0;">
-                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                            </td>
                             <td nowrap>
                                 <button type="button" class="btn btn-danger btn-xs" ng-click="removeItem()">
                                     <span class="glyphicon glyphicon-trash"></span> Usuń

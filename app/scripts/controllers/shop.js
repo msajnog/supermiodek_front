@@ -8,72 +8,73 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-.controller('ShopCtrl',['$scope', 'productService', 'MEDIA', function ($scope, productService, MEDIA) {
-    $scope.media_path = MEDIA.url;
+    .controller('ShopCtrl', ['$scope', 'productService', 'RESOURCES', function($scope, productService, RESOURCES) {
+        $scope.domain = RESOURCES.domain;
 
-    productService.get(function(response) {
-        if (response.data) {
-            $scope.products = response.data;
-            $scope.order = {
-                products: []
-            };
+        productService.get({status: '1'}, function(response) {
+            if (response.data) {
+                $scope.products = response.data;
+                $scope.order = {
+                    products: []
+                };
 
-            $scope.products.forEach(function (element) {
-                element.quantity = 0;
-                $scope.order.products.push(element);
+                $scope.products.forEach(function(element) {
+                    element.quantity = 0;
+                    $scope.order.products.push(element);
+                });
+            }
+            console.log($scope.products);
+        });
+
+
+        $scope.increase = function(id) {
+            var product = $scope.order.products.find(function(product) {
+                return product.id === id;
             });
-        }
-    });
 
+            product.quantity += 1;
+            $scope.checkProducts();
+        };
 
-  $scope.increase = function (id) {
-    var product = $scope.order.products.find(function (product) {
-      return product.id === id;
-    });
+        $scope.decrease = function(id) {
+            var product = $scope.order.products.find(function(product) {
+                return product.id === id;
+            });
 
-    product.quantity += 1;
-    $scope.checkProducts();
-  };
+            if (product.quantity > 0) {
+                product.quantity -= 1;
+            }
 
-  $scope.decrease = function (id) {
-      var product = $scope.order.products.find(function (product) {
-          return product.id === id;
-      });
+            $scope.checkProducts();
+        };
 
-      if (product.quantity > 0) {
-          product.quantity -= 1;
-      }
+        $scope.checkProducts = function() {
+            $scope.productsRequired = true;
 
-      $scope.checkProducts();
-  };
+            $scope.order.products.forEach(function(element) {
+                if (element.quantity > 0) {
+                    $scope.productsRequired = false;
+                    return;
+                }
+            });
+        };
 
-  $scope.checkProducts = function () {
-      $scope.productsRequired = true;
+        $scope.placeOrder = function() {
+            console.log($scope.placeOrderForm.$valid);
+            console.log($scope.order);
 
-      $scope.order.products.forEach(function (element) {
-          if (element.quantity > 0) {
-              $scope.productsRequired = false;
-              return;
-          }
-      });
-  };
+            if (!$scope.placeOrderForm.$valid) {
+                $scope.formInvalid = true;
+                return;
+            } else {
+                $scope.formInvalid = false;
+            }
 
-  $scope.placeOrder = function () {
-      console.log($scope.placeOrderForm.$valid);
-      console.log($scope.order);
+            $scope.checkProducts();
 
-      if (!$scope.placeOrderForm.$valid) {
-          $scope.formInvalid = true;
-          return;
-      } else {
-          $scope.formInvalid = false;
-      }
+            if ($scope.productsRequired) {
+                return;
+            }
+        };
 
-      $scope.checkProducts();
-
-      if ($scope.productsRequired) {
-          return;
-      }
-  };
-
-}]);
+    }]);

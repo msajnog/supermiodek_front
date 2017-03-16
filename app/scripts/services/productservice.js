@@ -8,13 +8,18 @@
  * Service in the filmwebFrontApp.
  */
 angular.module('supermiodek')
-  .factory('productService', ['$resource', 'API_ENDPOINT', function ($resource, API_ENDPOINT) {
-    return  $resource(API_ENDPOINT.url + 'products/', {}, {
-      'get': {
-        method: 'GET',
-      },
-      'save': {
-        method: 'POST',
-      }
-    });
-  }]);
+    .factory('productService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {
+        return $resource(RESOURCES.api + 'products/:status', {status: '@status'}, {
+            'get': {
+                method: 'GET',
+                params: {status: '@status'}
+            }
+        });
+    }])
+    .factory('saveProductService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {
+        return $resource(RESOURCES.api + 'products/', {}, {
+            'save': {
+                method: 'POST',
+            }
+        });
+    }]);
