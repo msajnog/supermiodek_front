@@ -13,6 +13,16 @@ angular.module('supermiodek')
             'get': {
                 method: 'GET',
                 params: {status: '@status'}
+            },
+            'getOne': {
+                url: RESOURCES.api + 'product/:id',
+                method: 'GET',
+                params: {id: '@id'}
+            },
+            'update': {
+                url: RESOURCES.api + 'products/:id',
+                method: 'PUT',
+                params: {id: ':id'}
             }
         });
     }])

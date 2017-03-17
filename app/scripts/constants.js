@@ -10,7 +10,7 @@ angular.module('supermiodek')
         return {
             domain: domain,
             api: domain + 'api/'
-        }
+        };
     })())
     .constant('MEDIA', {
         url: '/media/'

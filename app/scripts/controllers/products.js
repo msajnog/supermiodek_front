@@ -41,7 +41,7 @@ angular.module('supermiodek')
             }
 
             if (file) {
-                $scope.uploader.queue[0].upload()
+                $scope.uploader.queue[0].upload();
                 $scope.imageInvalid = false;
             } else {
                 $scope.imageInvalid = true;
