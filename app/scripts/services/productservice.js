@@ -9,8 +9,9 @@
  */
 angular.module('supermiodek')
     .factory('productService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {
-        return $resource(RESOURCES.api + 'products/:status', {status: '@status'}, {
+        return $resource(RESOURCES.api + 'products/', {}, {
             'get': {
+                url: RESOURCES.api + 'products/:status',
                 method: 'GET',
                 params: {status: '@status'}
             },
@@ -20,8 +21,13 @@ angular.module('supermiodek')
                 params: {id: '@id'}
             },
             'update': {
-                url: RESOURCES.api + 'products/:id',
+                url: RESOURCES.api + 'product/:id',
                 method: 'PUT',
+                params: {id: ':id'}
+            },
+            'remove': {
+                url: RESOURCES.api + 'product/:id',
+                method: 'delete',
                 params: {id: ':id'}
             }
         });

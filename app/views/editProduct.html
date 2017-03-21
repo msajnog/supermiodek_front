@@ -1,0 +1,111 @@
+<div class="container">
+    <form id="editProductForm" name="editProductForm" ng-submit="saveProduct()" novalidate>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback" ng-class="{'has-error': editProductForm.name.$dirty && editProductForm.name.$error.required, 'has-success': editProductForm.name.$dirty && !editProductForm.name.$error.required}">
+                    <label for="name" class="control-label">Nazwa<em>*</em></label>
+                    <input id="name" type="text" ng-model="product.name" name="name" class="form-control" placeholder="Nazwa" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.name.$dirty && !editProductForm.name.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="editProductForm.name.$dirty && editProductForm.name.$error.required"></span>
+                    <span class="error-msg" ng-show="editProductForm.name.$dirty && editProductForm.name.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback" ng-class="{'has-error': (editProductForm.price.$dirty && editProductForm.price.$error.required) || (editProductForm.price.$dirty && editProductForm.price.$error.pattern), 'has-success': editProductForm.price.$dirty && !editProductForm.price.$error.required && !editProductForm.price.$error.pattern}">
+                    <label for="price" class="control-label">Cena<em>*</em></label>
+                    <input id="price" type="text" ng-model="product.price" name="price" class="form-control" placeholder="Cena" ng-pattern="/^[0-9]+([.][0-9]+)?$/" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.price.$dirty && !editProductForm.price.$error.required && !editProductForm.price.$error.pattern"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(editProductForm.price.$dirty && editProductForm.price.$error.required) || (editProductForm.price.$dirty && editProductForm.price.$error.pattern)"></span>
+                    <span class="error-msg" ng-show="editProductForm.price.$dirty && editProductForm.price.$error.required">To pole jest wymagane</span>
+                    <span class="error-msg" ng-show="editProductForm.price.$dirty && editProductForm.price.$error.pattern">Nieprawidłowy format</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback" ng-class="{'has-error': editProductForm.shortDescription.$dirty && editProductForm.shortDescription.$error.required, 'has-success': editProductForm.shortDescription.$dirty && !editProductForm.shortDescription.$error.required}">
+                    <label for="shortDescription" class="control-label">Krótki opis<em>*</em></label>
+                    <textarea id="shortDescription" ng-model="product.shortDescription" name="shortDescription" class="form-control" placeholder="Krótki opis" required></textarea>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.shortDescription.$dirty && !editProductForm.shortDescription.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="editProductForm.shortDescription.$dirty && editProductForm.shortDescription.$error.required"></span>
+                    <span class="error-msg" ng-show="editProductForm.shortDescription.$dirty && editProductForm.shortDescription.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback" ng-class="{'has-error': editProductForm.description.$dirty && editProductForm.description.$error.required, 'has-success': editProductForm.description.$dirty && !editProductForm.description.$error.required}">
+                    <label for="description" class="control-label">Opis<em>*</em></label>
+                    <textarea id="description" ng-model="product.description" name="description" class="form-control" placeholder="Opis" required></textarea>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.description.$dirty && !editProductForm.description.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="editProductForm.description.$dirty && editProductForm.description.$error.required"></span>
+                    <span class="error-msg" ng-show="editProductForm.description.$dirty && editProductForm.description.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group has-feedback" ng-class="{'has-error': editProductForm.status.$dirty && editProductForm.status.$error.required, 'has-success': editProductForm.status.$dirty && !editProductForm.status.$error.required}">
+                    <label for="status">Status<em>*</em></label>
+                    <select name="status" id="status" ng-model="product.status" class="form-control" required>
+                        <option value>--Wybierz--</option>
+                        <option value="1">Włączone</option>
+                        <option value="0">Wyłączone</option>
+                    </select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.status.$dirty && !editProductForm.status.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="editProductForm.status.$dirty && editProductForm.status.$error.required"></span>
+                    <span class="error-msg" ng-show="editProductForm.status.$dirty && editProductForm.status.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group has-feedback" ng-class="{'has-error': editProductForm.availability.$dirty && editProductForm.availability.$error.required, 'has-success': editProductForm.availability.$dirty && !editProductForm.availability.$error.required}">
+                    <label for="availability">Stan magazynowy<em>*</em></label>
+                    <input type="number" name="availability" id="availability" ng-model="product.availability" min="0" class="form-control" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="editProductForm.availability.$dirty && !editProductForm.availability.$error.required"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="editProductForm.availability.$dirty && editProductForm.availability.$error.required"></span>
+                    <span class="error-msg" ng-show="editProductForm.availability.$dirty && editProductForm.availability.$error.required">To pole jest wymagane</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback">
+                    <label for="image" class="control-label">Nowe zdjęcie<em>*</em></label>
+                    <input id="image" type="file" ng-model="product.image" name="image" nv-file-select="" uploader="uploader" class="form-control" accept="image/*">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label>Aktualne zdjęcie</label>
+                <div class="clearfix"></div>
+                <img src="{{domain}}{{product.image}}" alt="" />
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <table class="table upload-section">
+                    <thead>
+                        <tr>
+                            <th width="50%">Nazwa</th>
+                            <th ng-show="uploader.isHTML5">Rozmiar</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in uploader.queue">
+                            <td>
+                                <strong>{{ item.file.name }}</strong><br><br>
+                                <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                            </td>
+                            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="removeItem()">
+                                    <span class="glyphicon glyphicon-trash"></span> Usuń
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12">
+                <p class="bg-danger" ng-show="formInvalid">Wypełnij prawidłowo wszystkie wymagane pola</p>
+                <p class="bg-danger" ng-show="imageInvalid">Dodaj zdjęcie</p>
+                <p class="bg-success" ng-show="submitSuccess">{{successMessage}}</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12"><button type="submit" class="btn btn-primary">Zapisz</button></div>
+        </div>
+    </form>
+</div>

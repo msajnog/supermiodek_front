@@ -18,6 +18,15 @@ angular.module('supermiodek')
             }
         });
 
+        $scope.remove = function(id, idx) {
+            if(confirm('Czy jesteś pewny?')) {
+                productService.remove({id: id}, function(res) {
+                    $scope.products.splice(idx, 1);
+                    alert(res.message);
+                });
+            }
+        };
+
         $scope.uploader = new FileUploader({
             queueLimit: 1,
             url: RESOURCES.api + 'upload/',

@@ -157,6 +157,11 @@ section {
             background: $red;
         }
     }
+
+    &.btn-small {
+        font-size: 1.4rem;
+        padding: 10px 15px;
+    }
 }
 
 .products-list {

@@ -22,23 +22,35 @@ angular.module('supermiodek')
                     element.quantity = 0;
                     $scope.order.products.push(element);
                 });
+
+                $scope.order.total = 0;
             }
-            console.log($scope.products);
         });
+
+        var calculateTotal = function() {
+            $scope.order.total = 0;
+            $scope.order.products.forEach(function(el) {
+                $scope.order.total += el.quantity * parseFloat(el.price);
+            });
+        }
 
 
         $scope.increase = function(id) {
             var product = $scope.order.products.find(function(product) {
-                return product.id === id;
+                return product._id === id;
             });
 
-            product.quantity += 1;
-            $scope.checkProducts();
+            if(product.quantity < product.availability) {
+                product.quantity += 1;
+                $scope.checkProducts();
+            }
+
+            calculateTotal();
         };
 
         $scope.decrease = function(id) {
             var product = $scope.order.products.find(function(product) {
-                return product.id === id;
+                return product._id === id;
             });
 
             if (product.quantity > 0) {
@@ -46,9 +58,10 @@ angular.module('supermiodek')
             }
 
             $scope.checkProducts();
+            calculateTotal();
         };
 
-        $scope.checkProducts = function() {
+        $scope.checkProducts = function(id) {
             $scope.productsRequired = true;
 
             $scope.order.products.forEach(function(element) {
@@ -57,11 +70,31 @@ angular.module('supermiodek')
                     return;
                 }
             });
+
+            if(id) {
+                checkQty(id);
+            }
         };
+
+        var checkQty = function(id) {
+            var product = $scope.order.products.find(function(product) {
+                return product._id === id;
+            });
+
+            if(product.quantity > product.availability) {
+                product.quantity = product.availability;
+            }
+
+            calculateTotal();
+        }
 
         $scope.placeOrder = function() {
             console.log($scope.placeOrderForm.$valid);
             console.log($scope.order);
+
+            // $scope.order.products = $scope.order.products.find(function(product) {
+            //     return product.quantity > 0;
+            // });
 
             if (!$scope.placeOrderForm.$valid) {
                 $scope.formInvalid = true;

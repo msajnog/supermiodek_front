@@ -29,17 +29,17 @@ angular.
         data: {
             loadMainBanner: false,
         }
-    }).state('product', {
-        url: '/product/:id',
-        templateUrl: 'views/addProduct.html',
-        controller: 'EditProductCtrl',
-        data: {
-            loadMainBanner: false,
-        }
     }).state('addProduct', {
         url: '/products/add',
         templateUrl: 'views/addProduct.html',
         controller: 'ProductsCtrl',
+        data: {
+            loadMainBanner: false,
+        }
+    }).state('editProduct', {
+        url: '/product/:id',
+        templateUrl: 'views/editProduct.html',
+        controller: 'EditProductCtrl',
         data: {
             loadMainBanner: false,
         }
