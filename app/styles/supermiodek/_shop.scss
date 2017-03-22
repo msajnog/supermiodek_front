@@ -45,3 +45,20 @@
         margin: 30px auto 0 auto;
     }
 }
+
+.ngdialog.order-confirmation {
+    .ngdialog-content {
+        width: auto;
+        max-width: 1000px;
+
+        table {
+            tr {
+                td {
+                    + td {
+                       text-align: center;
+                   }
+                }
+            }
+        }
+    }
+}

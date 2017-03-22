@@ -4,7 +4,8 @@ angular.
     module('supermiodek', [
     'ngResource',
     'ui.router',
-    'angularFileUpload'
+    'angularFileUpload',
+    'ngDialog'
     ])
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 

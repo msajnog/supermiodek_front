@@ -1,0 +1,31 @@
+<script type="text/ng-template" id="shopConfirm">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nazwa</th>
+                <th>Ilość</th>
+                <th>Cena jednostkowa</th>
+                <th>Cena całościowa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in order.products">
+                <td>{{$index}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>{{product.price*product.quantity | currency}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>Do zapłaty: <b>{{order.total || currency}}</b></td>
+            </tr>
+        </tfoot>
+    </table>
+</script>

@@ -8,7 +8,8 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('ShopCtrl', ['$scope', 'productService', 'RESOURCES', function($scope, productService, RESOURCES) {
+    .controller('ShopCtrl', ['$scope', 'productService', 'ngDialog', 'RESOURCES',
+     function($scope, productService, ngDialog, RESOURCES) {
         $scope.domain = RESOURCES.domain;
 
         productService.get({status: '1'}, function(response) {
@@ -20,7 +21,7 @@ angular.module('supermiodek')
 
                 $scope.products.forEach(function(element) {
                     element.quantity = 0;
-                    $scope.order.products.push(element);
+                    // $scope.order.products.push(element);
                 });
 
                 $scope.order.total = 0;
@@ -32,13 +33,21 @@ angular.module('supermiodek')
             $scope.order.products.forEach(function(el) {
                 $scope.order.total += el.quantity * parseFloat(el.price);
             });
-        }
+        };
 
 
         $scope.increase = function(id) {
             var product = $scope.order.products.find(function(product) {
                 return product._id === id;
             });
+
+            if(!product) {
+                product = $scope.products.find(function(product) {
+                    return product._id === id;
+                });
+
+                $scope.order.products.push(product);
+            }
 
             if(product.quantity < product.availability) {
                 product.quantity += 1;
@@ -53,9 +62,17 @@ angular.module('supermiodek')
                 return product._id === id;
             });
 
+            if(!product) {
+                return;
+            }
+
             if (product.quantity > 0) {
                 product.quantity -= 1;
             }
+
+            $scope.order.products = $scope.order.products.filter(function(item) {
+                return item.quantity > 0;
+            });
 
             $scope.checkProducts();
             calculateTotal();
@@ -86,12 +103,17 @@ angular.module('supermiodek')
             }
 
             calculateTotal();
-        }
+        };
+
+        $scope.open = function() {
+            ngDialog.open({ template: 'firstDialogId' });
+        };
 
         $scope.placeOrder = function() {
             console.log($scope.placeOrderForm.$valid);
             console.log($scope.order);
 
+            // order only products where qty is greater than 0
             // $scope.order.products = $scope.order.products.find(function(product) {
             //     return product.quantity > 0;
             // });
