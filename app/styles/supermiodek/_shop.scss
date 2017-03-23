@@ -50,12 +50,36 @@
     .ngdialog-content {
         width: auto;
         max-width: 1000px;
+        background: #fff;
+        padding-top: 35px;
+
+        .panel-content {
+            padding: 15px 0;
+        }
+
+        .container {
+            max-width: 100%;
+        }
 
         table {
             tr {
-                td {
-                    + td {
+                td, th {
+                    + td, + th {
                        text-align: center;
+
+                       &:last-of-type {
+                           text-align: right;
+                       }
+                   }
+
+                   &.total {
+                       font-size: 2.0rem;
+                       color: $brown;
+                       text-transform: uppercase;
+
+                       b {
+                           margin-left: 15px;
+                       }
                    }
                 }
             }

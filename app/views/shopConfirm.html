@@ -1,31 +1,50 @@
 <script type="text/ng-template" id="shopConfirm">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nazwa</th>
-                <th>Ilość</th>
-                <th>Cena jednostkowa</th>
-                <th>Cena całościowa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="product in order.products">
-                <td>{{$index}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.quantity}}</td>
-                <td>{{product.price | currency}}</td>
-                <td>{{product.price*product.quantity | currency}}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>Do zapłaty: <b>{{order.total || currency}}</b></td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="panel panel-default">
+        <div class="panel-heading">Podsumowanie</div>
+        <div class="panel-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <b>Dane klienta</b><br>
+                        {{order.client.name}} {{order.client.surname}} <br>
+                        {{order.client.email}} <br>
+                        {{order.client.phone}}
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <b>Dane do dostawy</b><br>
+                        <pre>{{order.client.shipment}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nazwa</th>
+                    <th>Ilość</th>
+                    <th>Cena za sztukę</th>
+                    <th>Suma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in order.products">
+                    <td>{{$index + 1}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.price | currency}}</td>
+                    <td>{{product.price*product.quantity | currency}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="total">Do zapłaty: <b>{{order.total | currency}}</b></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </script>

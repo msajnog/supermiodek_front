@@ -105,9 +105,15 @@ angular.module('supermiodek')
             calculateTotal();
         };
 
-        $scope.open = function() {
-            ngDialog.open({ template: 'firstDialogId' });
+        var confirmOrder = function () {
+            ngDialog.open({
+                template: 'shopConfirm',
+                className: 'ngdialog ngdialog-theme-default order-confirmation',
+                scope: $scope
+            });
         };
+
+        $scope.tests = [1,2,3,4,5,6,7]
 
         $scope.placeOrder = function() {
             console.log($scope.placeOrderForm.$valid);
@@ -130,6 +136,8 @@ angular.module('supermiodek')
             if ($scope.productsRequired) {
                 return;
             }
+
+            confirmOrder();
         };
 
     }]);
