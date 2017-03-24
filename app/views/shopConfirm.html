@@ -42,9 +42,34 @@
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td class="total">Do zapłaty: <b>{{order.total | currency}}</b></td>
+                    <td class="total">Suma: <b>{{order.productsTotal | currency}}</b></td>
                 </tr>
             </tfoot>
         </table>
+        <div class="panel-content">
+            <div class="container">
+                <div class="row">
+                    <div class="shipment">
+                        <div class="col-xs-12"><b>Wybierz metodę dostawy:</b></div>
+                        <div class="col-xs-3" ng-repeat="method in shipmentMethods">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="shipment" value="{{method.name}}" ng-click="chooseShipmentMethod(method._id)" ng-checked="method._id === order.shipment._id"> {{method.name}} {{method.price | currency}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-content total-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="total">Do zapłaty: <b>{{order.total | currency}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </script>

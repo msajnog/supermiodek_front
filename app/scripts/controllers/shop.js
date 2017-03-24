@@ -11,6 +11,18 @@ angular.module('supermiodek')
     .controller('ShopCtrl', ['$scope', 'productService', 'ngDialog', 'RESOURCES',
      function($scope, productService, ngDialog, RESOURCES) {
         $scope.domain = RESOURCES.domain;
+        $scope.shipmentMethods = [
+            {
+                _id: 1,
+                name: 'Kurier',
+                price: 13.00
+            },
+            {
+                _id: 2,
+                name: 'Poczta Polska',
+                price: 8.50
+            }
+        ];
 
         productService.get({status: '1'}, function(response) {
             if (response.data) {
@@ -32,7 +44,12 @@ angular.module('supermiodek')
             $scope.order.total = 0;
             $scope.order.products.forEach(function(el) {
                 $scope.order.total += el.quantity * parseFloat(el.price);
+                $scope.order.productsTotal = $scope.order.total;
             });
+
+            if ($scope.order.shipment) {
+                $scope.order.total += $scope.order.shipment.price;
+            }
         };
 
 
@@ -78,6 +95,16 @@ angular.module('supermiodek')
             calculateTotal();
         };
 
+        $scope.chooseShipmentMethod = function (id) {
+            var choosedMethod = $scope.shipmentMethods.find(function (el) {
+                return el._id === id;
+            });
+
+            $scope.order.shipment = choosedMethod;
+            calculateTotal();
+            console.log($scope.order);
+        };
+
         $scope.checkProducts = function(id) {
             $scope.productsRequired = true;
 
@@ -112,8 +139,6 @@ angular.module('supermiodek')
                 scope: $scope
             });
         };
-
-        $scope.tests = [1,2,3,4,5,6,7]
 
         $scope.placeOrder = function() {
             console.log($scope.placeOrderForm.$valid);
