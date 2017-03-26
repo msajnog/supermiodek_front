@@ -8,7 +8,8 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('ProductsCtrl', ['$scope', 'productService', 'saveProductService', 'FileUploader', 'RESOURCES', function($scope, productService, saveProductService, FileUploader, RESOURCES) {
+    .controller('ProductsCtrl', ['$scope', 'productService', 'saveProductService', 'FileUploader', 'RESOURCES',
+     function($scope, productService, saveProductService, FileUploader, RESOURCES) {
         $scope.product = {};
         $scope.domain = RESOURCES.domain;
 

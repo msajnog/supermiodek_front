@@ -1,5 +1,5 @@
 <div id="shop" class="container">
-    <form name="placeOrderForm" ng-submit="placeOrder()" novalidate>
+    <form name="placeOrderForm" ng-submit="confirmOrder()" novalidate>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.name.$dirty && placeOrderForm.name.$error.required, 'has-success': placeOrderForm.name.$dirty && !placeOrderForm.name.$error.required}">
@@ -80,6 +80,9 @@
             </div>
             <div class="col-xs-12">
                 <p class="bg-danger" ng-show="formInvalid">Wypełnij prawidłowo wszystkie wymagane pola</p>
+            </div>
+            <div class="col-xs-12">
+                <p class="bg-success" ng-show="submitSuccess">{{successMessage}}</p>
             </div>
             <div class="clearfix"></div>
             <div class="col-xs-12"><button type="submit" class="btn btn-primary">Złóż zamówienie</button></div>

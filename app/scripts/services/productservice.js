@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc service
- * @name filmwebFrontApp.categoryService
+ * @name supermiodek.productservice
  * @description
- * # categoryService
- * Service in the filmwebFrontApp.
+ * # productservice
+ * Service in the supermiodek.
  */
 angular.module('supermiodek')
     .factory('productService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {

@@ -8,17 +8,17 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('ShopCtrl', ['$scope', 'productService', 'ngDialog', 'RESOURCES',
-     function($scope, productService, ngDialog, RESOURCES) {
+    .controller('ShopCtrl', ['$scope', 'productService', 'orderService', 'ngDialog', 'RESOURCES',
+     function($scope, productService, orderService, ngDialog, RESOURCES) {
         $scope.domain = RESOURCES.domain;
         $scope.shipmentMethods = [
             {
-                _id: 1,
+                _id: '1',
                 name: 'Kurier',
                 price: 13.00
             },
             {
-                _id: 2,
+                _id: '2',
                 name: 'Poczta Polska',
                 price: 8.50
             }
@@ -101,8 +101,8 @@ angular.module('supermiodek')
             });
 
             $scope.order.shipment = choosedMethod;
+            $scope.shipmentInvalid = false;
             calculateTotal();
-            console.log($scope.order);
         };
 
         $scope.checkProducts = function(id) {
@@ -132,7 +132,7 @@ angular.module('supermiodek')
             calculateTotal();
         };
 
-        var confirmOrder = function () {
+        var openConfirmPopup = function () {
             ngDialog.open({
                 template: 'shopConfirm',
                 className: 'ngdialog ngdialog-theme-default order-confirmation',
@@ -140,15 +140,7 @@ angular.module('supermiodek')
             });
         };
 
-        $scope.placeOrder = function() {
-            console.log($scope.placeOrderForm.$valid);
-            console.log($scope.order);
-
-            // order only products where qty is greater than 0
-            // $scope.order.products = $scope.order.products.find(function(product) {
-            //     return product.quantity > 0;
-            // });
-
+        $scope.confirmOrder = function() {
             if (!$scope.placeOrderForm.$valid) {
                 $scope.formInvalid = true;
                 return;
@@ -162,7 +154,32 @@ angular.module('supermiodek')
                 return;
             }
 
-            confirmOrder();
+            openConfirmPopup();
         };
 
+        $scope.placeOrder = function () {
+            $scope.successMessage = false;
+            if(!$scope.order.shipment) {
+                $scope.shipmentInvalid = true;
+                return;
+            }
+
+            console.log($scope.order);
+            orderService.save($scope.order, function(response) {
+                if (response.status) {
+                    $scope.order.client = {};
+                    $scope.order.products = [];
+                    $scope.order.shipment = {};
+                    $scope.order.total = 0;
+                    $scope.order.productsTotal = 0;
+                    $scope.products.forEach(function(product) {
+                        product.quantity = 0;
+                    });
+                    $scope.placeOrderForm.$setPristine();
+                    $scope.submitSuccess = true;
+                    $scope.successMessage = response.message;
+                    ngDialog.close();
+                }
+            });
+        };
     }]);
