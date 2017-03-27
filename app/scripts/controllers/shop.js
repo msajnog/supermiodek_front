@@ -8,8 +8,8 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('ShopCtrl', ['$scope', 'productService', 'orderService', 'ngDialog', 'RESOURCES',
-     function($scope, productService, orderService, ngDialog, RESOURCES) {
+    .controller('ShopCtrl', ['$scope', 'productService', 'orderService', 'ngDialog', '$timeout', 'RESOURCES',
+     function($scope, productService, orderService, ngDialog, $timeout, RESOURCES) {
         $scope.domain = RESOURCES.domain;
         $scope.shipmentMethods = [
             {
@@ -23,6 +23,14 @@ angular.module('supermiodek')
                 price: 8.50
             }
         ];
+
+        $scope.submitSuccess = false;
+
+        $scope.$watch('submitSuccess', function() {
+            $timeout(function() {
+                $scope.submitSuccess = false;
+            }, 10000);
+        });
 
         productService.get({status: '1'}, function(response) {
             if (response.data) {
@@ -47,7 +55,8 @@ angular.module('supermiodek')
                 $scope.order.productsTotal = $scope.order.total;
             });
 
-            if ($scope.order.shipment) {
+
+            if ($scope.order.shipment && Object.keys($scope.order.shipment).length) {
                 $scope.order.total += $scope.order.shipment.price;
             }
         };
@@ -164,7 +173,6 @@ angular.module('supermiodek')
                 return;
             }
 
-            console.log($scope.order);
             orderService.save($scope.order, function(response) {
                 if (response.status) {
                     $scope.order.client = {};
