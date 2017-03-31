@@ -31,7 +31,6 @@ angular.module('supermiodek')
         $scope.uploader = new FileUploader({
             queueLimit: 1,
             url: RESOURCES.api + 'upload/',
-            // removeAfterUpload: true
         });
 
         $scope.removeItem = function() {

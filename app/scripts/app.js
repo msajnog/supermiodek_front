@@ -44,6 +44,20 @@ angular.
         data: {
             loadMainBanner: false,
         }
+    }).state('orders', {
+        url: '/orders',
+        templateUrl: 'views/orders.html',
+        controller: 'OrdersCtrl',
+        data: {
+            loadMainBanner: false,
+        }
+    }).state('editOrder', {
+        url: '/order/:id',
+        templateUrl: 'views/editOrder.html',
+        controller: 'EditOrderCtrl',
+        data: {
+            loadMainBanner: false,
+        }
     });
 
     $urlRouterProvider.otherwise("/");

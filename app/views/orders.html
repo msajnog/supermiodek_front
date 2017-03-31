@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="ordersTable" class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Klient</th>
+                    <th>Data złożenia</th>
+                    <th>Status</th>
+                    <th>Wartość produktów</th>
+                    <th>Metoda dostawy</th>
+                    <th>Opcje</th>
+                </tr>
+                <tr ng-repeat="order in orders | orderBy : '-date'">
+                    <td>{{$index +1}}</td>
+                    <td><a href="#/order/{{order._id}}">{{order.client.name}} {{order.client.surname}}</a></td>
+                    <td>{{order.date | date:'medium'}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.productsTotal | currency}}</td>
+                    <td>{{order.shipment.name}}</td>
+                    <td>
+                        <a href="#/order/{{order._id}}" class="btn btn-secondary btn-small" ng-click="">Edytuj</a>
+                        <button type="button" class="btn btn-primary btn-small" ng-click="">Usuń</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -29,7 +29,7 @@ angular.module('supermiodek')
         $scope.$watch('submitSuccess', function() {
             $timeout(function() {
                 $scope.submitSuccess = false;
-            }, 10000);
+            }, 7000);
         });
 
         productService.get({status: '1'}, function(response) {
@@ -114,6 +114,18 @@ angular.module('supermiodek')
             calculateTotal();
         };
 
+        var checkQty = function(id) {
+            var product = $scope.order.products.find(function(product) {
+                return product._id === id;
+            });
+
+            if(product.quantity > product.availability) {
+                product.quantity = product.availability;
+            }
+
+            calculateTotal();
+        };
+
         $scope.checkProducts = function(id) {
             $scope.productsRequired = true;
 
@@ -127,18 +139,6 @@ angular.module('supermiodek')
             if(id) {
                 checkQty(id);
             }
-        };
-
-        var checkQty = function(id) {
-            var product = $scope.order.products.find(function(product) {
-                return product._id === id;
-            });
-
-            if(product.quantity > product.availability) {
-                product.quantity = product.availability;
-            }
-
-            calculateTotal();
         };
 
         var openConfirmPopup = function () {
