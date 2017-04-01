@@ -20,7 +20,7 @@
                     <td>{{order.shipment.name}}</td>
                     <td>
                         <a href="#/order/{{order._id}}" class="btn btn-secondary btn-small" ng-click="">Edytuj</a>
-                        <button type="button" class="btn btn-primary btn-small" ng-click="">Usuń</button>
+                        <button type="button" class="btn btn-primary btn-small" ng-click="remove(order._id, $index)">Usuń</button>
                     </td>
                 </tr>
             </table>

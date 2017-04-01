@@ -8,14 +8,30 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('EditOrderCtrl', ['$scope', 'orderService', '$stateParams',
-    function($scope, orderService, $stateParams) {
+    .controller('EditOrderCtrl', ['$scope', 'orderService', 'productService', '$stateParams', 'RESOURCES',
+    function($scope, orderService, productService, $stateParams, RESOURCES) {
         $scope.product = {};
+        $scope.domain = RESOURCES.domain;
 
-        orderService.getOne({id: $stateParams.id}, function(response) {
+        productService.get(function(response) {
             if (response.data) {
-                $scope.order = response.data;
+                $scope.products = response.data;
+
+                orderService.getOne({id: $stateParams.id}, function(response) {
+                    if (response.data) {
+                        $scope.order = response.data;
+
+                        $scope.products.forEach(function(product) {
+                            $scope.order.products.forEach(function(orderProduct) {
+                                if (product._id === orderProduct.id) {
+                                    product.quantity = orderProduct.quantity;
+                                }
+                            });
+                        });
+                    }
+                });
             }
         });
 
+        
     }]);

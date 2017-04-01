@@ -22,5 +22,15 @@ angular.module('supermiodek')
                 method: 'GET',
                 params: {id: '@id'}
             },
+            'update': {
+                url: RESOURCES.api + 'order/:id',
+                method: 'PUT',
+                params: {id: ':id'}
+            },
+            'remove': {
+                url: RESOURCES.api + 'order/:id',
+                method: 'delete',
+                params: {id: ':id'}
+            }
         });
     }]);

@@ -57,11 +57,11 @@ angular.module('supermiodek')
                 return;
             }
 
-            $scope.uploader.onError = function(err) {
+            $scope.uploader.onError = function() {
                 return;
             };
 
-            $scope.uploader.onSuccessItem = function(item, response, status, headers) {
+            $scope.uploader.onSuccessItem = function(item, response) {
                 if (response.status) {
                     $scope.product.image = response.path;
 
