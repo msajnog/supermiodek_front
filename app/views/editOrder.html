@@ -1,8 +1,5 @@
 <div class="container">
-    <form id="editOrderForm" name="editOrderForm" ng-submit="" novalidate>
-        edit order
-        {{order.client.name}} {{order.client.surname}}
-
+    <form id="editOrderForm" name="editOrderForm" ng-submit="editOrder()" novalidate>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback" ng-class="{'has-error': placeOrderForm.name.$dirty && placeOrderForm.name.$error.required, 'has-success': placeOrderForm.name.$dirty && !placeOrderForm.name.$error.required}">
@@ -43,6 +40,22 @@
                     <span class="error-msg" ng-show="placeOrderForm.phone.$dirty && !placeOrderForm.phone.$valid && !placeOrderForm.phone.$error.required">Nieprawidłowy format</span>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-deefback">
+                    <label for="status" class="control-label">Status</label>
+                    <select id="status" class="form-control" name="" ng-model="order.status">
+                        <option ng-repeat="status in statuses" value="{{status}}">{{status}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-deefback">
+                    <label for="shipmentMethod" class="control-label">Metoda dostawy</label>
+                    <select id="shipmentMethod" class="form-control" name="" ng-model="order.shipment.name">
+                        <option ng-repeat="method in shipmentMethods" value="{{method.name}}">{{method.name}} {{method.price | currency}}</option>
+                    </select>
+                </div>
+            </div>
             <div class="clearfix"></div>
             <div class="col-xs-12  col-sm-6" ng-class="{'has-error': placeOrderForm.shipping.$dirty && placeOrderForm.shipping.$error.required, 'has-success': placeOrderForm.shipping.$dirty && !placeOrderForm.shipping.$error.required}">
                 <div class="form-group has-feedback">
@@ -69,7 +82,7 @@
                     <div class="price">{{product.price | currency}}</div>
                     <div class="quantity">
                         <button type="button" class="glyphicon glyphicon-minus asc" ng-click="decrease(product._id)"></button>
-                        <input type="number" ng-model="product.quantity" ng-change="checkProducts(product._id)" ng-min="0" name="quantity" value="{{order.product}}" class="form-control">
+                        <input type="number" ng-model="product.quantity" ng-change="checkProducts(product._id)" ng-min="0" name="quantity" class="form-control">
                         <button type="button" class="glyphicon glyphicon-plus dec" ng-click="increase(product._id)"></button>
                     </div>
                 </li>
@@ -88,7 +101,7 @@
                 <p class="bg-success" ng-show="submitSuccess">{{successMessage}}</p>
             </div>
             <div class="clearfix"></div>
-            <div class="col-xs-12"><button type="submit" class="btn btn-primary">Złóż zamówienie</button></div>
+            <div class="col-xs-12"><button type="submit" class="btn btn-primary">Zapisz</button></div>
         </div>
     </form>
 </div>

@@ -1,0 +1,151 @@
+<div id="configView" class="container">
+    <form name="configForm" novalidate>
+        <div class="row">
+            <h4 class="red">Statusy</h4>
+            <table id="statusesTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nazwa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="status in statuses">
+                        <td>{{$index+1}}</td>
+                        <td>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" value="{{status}}">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><button class="btn btn-secondary">Dodaj nowy status</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="row">
+            <h4 class="red">Metody dostawy</h4>
+            <div class="col-xs-12">
+                <table id="shipmentsTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nazwa</th>
+                            <th>Cena (zł)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="shipment in shipmentMethods">
+                            <td>{{$index+1}}</td>
+                            <td>
+                                <div class="form-group has-feedback">
+                                    <input type="text" class="form-control" value="{{shipment.name}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group has-feedback">
+                                    <input type="number" class="form-control" value="{{shipment.price}}">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><button class="btn btn-secondary">Dodaj nową metodę</button></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="red">Dane do płatności</h4>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback">
+                    <label for="paymentName">Imię i nazwisko odbiorcy</label>
+                    <input type="text"
+                           id="paymentName"
+                           name="paymentName"
+                           class="form-control"
+                           value="{{payment.name}}"
+                           required>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 street">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="form-group has-feedback">
+                            <label for="paymentStreet">Ulica</label>
+                            <input type="text"
+                                   id="paymentStreet"
+                                   name="paymentStreet"
+                                   class="form-control"
+                                   value="{{payment.address.street}}"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group has-feedback">
+                            <label for="paymentBuildingNumber">Nr domu</label>
+                            <input type="text"
+                                   id="paymentBuildingNumber"
+                                   name="paymentBuildingNumber"
+                                   class="form-control"
+                                   value="{{payment.address.buildingNumber}}"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group has-feedback">
+                            <label for="paymentFlatNumber">Nr mieszkania</label>
+                            <input type="text"
+                                   id="paymentFlatNumber"
+                                   name="paymentFlatNumber"
+                                   class="form-control"
+                                   value="{{payment.address.flatNumber}}"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback">
+                    <label for="paymentPostalCode">Kod pocztowy</label>
+                    <input type="text"
+                           id="paymentPostalCode"
+                           name="paymentPostalCode"
+                           class="form-control"
+                           value="{{payment.address.postalCode}}"
+                           required>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback">
+                    <label for="paymentCity">Miejscowość</label>
+                    <input type="text"
+                           id="paymentCity"
+                           name="paymentCity"
+                           class="form-control"
+                           value="{{payment.address.city}}"
+                           required>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group has-feedback">
+                    <label for="paymentAccount">Nr konta</label>
+                    <input type="text"
+                           id="paymentAccount"
+                           name="paymentAccount"
+                           class="form-control"
+                           value="{{payment.account}}"
+                           required>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

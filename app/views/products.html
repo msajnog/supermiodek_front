@@ -14,7 +14,10 @@
                     <td><a href="#/product/{{product._id}}">{{product.name}}</a></td>
                     <td>{{product.availability}}</td>
                     <td>{{product.status === '1' ? 'Włączone' : 'Wyłączone'}}</td>
-                    <td><button type="button" class="btn btn-primary btn-small" ng-click="remove(product._id, $index)">Usuń</button></td>
+                    <td>
+                        <a href="#/product/{{product._id}}" class="btn btn-secondary btn-small">Edytuj</a>
+                        <button type="button" class="btn btn-primary btn-small" ng-click="remove(product._id, $index)">Usuń</button>
+                    </td>
                 </tr>
             </table>
             <a href="#/products/add" class="btn btn-secondary">Dodaj produkt</a>

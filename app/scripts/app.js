@@ -15,6 +15,7 @@ angular.
         controller: 'HomeCtrl',
         data: {
             loadMainBanner: true,
+            adminPage: false
         }
     }).state('shop', {
         url: '/shop',
@@ -22,6 +23,7 @@ angular.
         controller: 'ShopCtrl',
         data: {
             loadMainBanner: true,
+            adminPage: false
         }
     }).state('products', {
         url: '/products',
@@ -29,6 +31,7 @@ angular.
         controller: 'ProductsCtrl',
         data: {
             loadMainBanner: false,
+            adminPage: true
         }
     }).state('addProduct', {
         url: '/products/add',
@@ -36,6 +39,7 @@ angular.
         controller: 'ProductsCtrl',
         data: {
             loadMainBanner: false,
+            adminPage: true
         }
     }).state('editProduct', {
         url: '/product/:id',
@@ -43,6 +47,7 @@ angular.
         controller: 'EditProductCtrl',
         data: {
             loadMainBanner: false,
+            adminPage: true
         }
     }).state('orders', {
         url: '/orders',
@@ -50,6 +55,7 @@ angular.
         controller: 'OrdersCtrl',
         data: {
             loadMainBanner: false,
+            adminPage: true
         }
     }).state('editOrder', {
         url: '/order/:id',
@@ -57,6 +63,15 @@ angular.
         controller: 'EditOrderCtrl',
         data: {
             loadMainBanner: false,
+            adminPage: true
+        }
+    }).state('config', {
+        url: '/config',
+        templateUrl: 'views/config.html',
+        controller: 'ConfigCtrl',
+        data: {
+            loadMainBanner: false,
+            adminPage: true
         }
     });
 

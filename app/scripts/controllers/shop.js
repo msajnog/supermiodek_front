@@ -32,26 +32,29 @@ angular.module('supermiodek')
             }, 7000);
         });
 
-        productService.get({status: '1'}, function(response) {
-            if (response.data) {
-                $scope.products = response.data;
-                $scope.order = {
-                    products: []
-                };
+        var getProducts = function() {
+            productService.get({status: '1'}, function(response) {
+                if (response.data) {
+                    $scope.products = response.data;
+                    $scope.order = {
+                        products: []
+                    };
 
-                $scope.products.forEach(function(element) {
-                    element.quantity = 0;
-                    // $scope.order.products.push(element);
-                });
+                    $scope.products.forEach(function(element) {
+                        element.quantity = 0;
+                        // $scope.order.products.push(element);
+                    });
 
-                $scope.order.total = 0;
-            }
-        });
+                    $scope.order.total = 0;
+                }
+            });
+         };
 
         var calculateTotal = function() {
             $scope.order.total = 0;
             $scope.order.products.forEach(function(el) {
                 $scope.order.total += el.quantity * parseFloat(el.price);
+                $scope.order.total = parseFloat($scope.order.total.toFixed(2));
                 $scope.order.productsTotal = $scope.order.total;
             });
 
@@ -60,7 +63,6 @@ angular.module('supermiodek')
                 $scope.order.total += $scope.order.shipment.price;
             }
         };
-
 
         $scope.increase = function(id) {
             var product = $scope.order.products.find(function(product) {
@@ -105,11 +107,10 @@ angular.module('supermiodek')
         };
 
         $scope.chooseShipmentMethod = function (id) {
-            var choosedMethod = $scope.shipmentMethods.find(function (el) {
+            $scope.order.shipment = $scope.shipmentMethods.find(function (el) {
                 return el._id === id;
             });
 
-            $scope.order.shipment = choosedMethod;
             $scope.shipmentInvalid = false;
             calculateTotal();
         };
@@ -158,6 +159,7 @@ angular.module('supermiodek')
             }
 
             $scope.checkProducts();
+            console.log($scope.order);
 
             if ($scope.productsRequired) {
                 return;
@@ -172,7 +174,7 @@ angular.module('supermiodek')
                 $scope.shipmentInvalid = true;
                 return;
             }
-
+            console.log($scope.order);
             orderService.save($scope.order, function(response) {
                 if (response.status) {
                     $scope.order.client = {};
@@ -186,8 +188,11 @@ angular.module('supermiodek')
                     $scope.placeOrderForm.$setPristine();
                     $scope.submitSuccess = true;
                     $scope.successMessage = response.message;
+                    getProducts();
                     ngDialog.close();
                 }
             });
         };
+
+         getProducts();
     }]);

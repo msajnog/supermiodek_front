@@ -1,39 +1,19 @@
-
 header {
-    // #headerTop {
-    //     background: $beige;
-    //     padding: 10px 0;
-    //
-    //     .logo {
-    //         padding-left: 20px;
-    //
-    //         img {
-    //             max-width: 80px;
-    //         }
-    //     }
-    //
-    //     .info-box {
-    //         position: relative;
-    //         float: right;
-    //         padding-right: 20px;
-    //         padding-left: 30px;
-    //         margin-top: 30px;
-    //
-    //         p, a {
-    //             font-family: $primary-font;
-    //             color: $grey;
-    //             font-size: 1.2rem;
-    //             margin-bottom: 0;
-    //         }
-    //
-    //         &:before {
-    //             position: absolute;
-    //             left: 0;
-    //             font-size: 2.9rem;
-    //             color: $red;
-    //         }
-    //     }
-    // }
+     #headerTop {
+         height: 70px;
+         background: $beige;
+
+         a {
+             text-transform: uppercase;
+             font-size: 18px;
+             color: $blue;
+             margin-left: 10px;
+
+             &:hover {
+                 color: $red;
+             }
+         }
+     }
 
     .navbar {
         height: $navbar-height;

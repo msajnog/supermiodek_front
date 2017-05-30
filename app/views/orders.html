@@ -3,23 +3,46 @@
         <div class="col-xs-12">
             <table id="ordersTable" class="table table-striped">
                 <tr>
-                    <th>#</th>
-                    <th>Klient</th>
-                    <th>Data złożenia</th>
-                    <th>Status</th>
-                    <th>Wartość produktów</th>
-                    <th>Metoda dostawy</th>
+                    <th ng-click="sortBy('client.surname')">
+                        Klient
+                        <span class="sortorder"
+                              ng-show="propertyName === 'client.surname'"
+                              ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="sortBy('date')">
+                        Data złożenia
+                        <span class="sortorder"
+                              ng-show="propertyName === 'date'"
+                              ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="sortBy('status')">
+                        Status
+                        <span class="sortorder"
+                              ng-show="propertyName === 'status'"
+                              ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="sortBy('productsTotal')">
+                        Wartość produktów
+                        <span class="sortorder"
+                              ng-show="propertyName === 'productsTotal'"
+                              ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="sortBy('shipment.name')">
+                        Metoda dostawy
+                        <span class="sortorder"
+                              ng-show="propertyName === 'shipment.name'"
+                              ng-class="{reverse: reverse}"></span>
+                    </th>
                     <th>Opcje</th>
                 </tr>
-                <tr ng-repeat="order in orders | orderBy : '-date'">
-                    <td>{{$index +1}}</td>
-                    <td><a href="#/order/{{order._id}}">{{order.client.name}} {{order.client.surname}}</a></td>
+                <tr ng-repeat="order in orders | orderBy : propertyName : reverse">
+                    <td><a href="#/order/{{order._id}}">{{order.client.surname}} {{order.client.name}}</a></td>
                     <td>{{order.date | date:'medium'}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.productsTotal | currency}}</td>
                     <td>{{order.shipment.name}}</td>
                     <td>
-                        <a href="#/order/{{order._id}}" class="btn btn-secondary btn-small" ng-click="">Edytuj</a>
+                        <a href="#/order/{{order._id}}" class="btn btn-secondary btn-small">Edytuj</a>
                         <button type="button" class="btn btn-primary btn-small" ng-click="remove(order._id, $index)">Usuń</button>
                     </td>
                 </tr>

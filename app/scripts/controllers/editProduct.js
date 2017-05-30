@@ -41,10 +41,8 @@ angular.module('supermiodek')
             }
 
             var saveRequest = function () {
-                console.log($scope.product);
                 productService.update({id: $scope.product._id}, $scope.product, function(response) {
                     // $scope.product = {};
-                    console.log(response);
 
                     $scope.submitSuccess = true;
                     $scope.successMessage = response.message;
@@ -58,7 +56,7 @@ angular.module('supermiodek')
 
             if (file) {
                 $scope.uploader.queue[0].upload();
-                $scope.uploader.onSuccessItem = function(item, response, status, headers) {
+                $scope.uploader.onSuccessItem = function(item, response) {
                     if (response.status) {
                         $scope.product.image = response.path;
 
