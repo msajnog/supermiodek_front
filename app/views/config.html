@@ -7,22 +7,32 @@
                     <tr>
                         <th>#</th>
                         <th>Nazwa</th>
+                        <th>Opcje</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="status in statuses">
-                        <td>{{$index+1}}</td>
+                    <tr ng-repeat="status in config.statuses">
+                        <td>{{ $index+1 }}</td>
                         <td>
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" value="{{status}}">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        ng-change="logChanged()"
+                                        ng-model="status.name"
+                                        value="{{ status.name }}">
                             </div>
                         </td>
+                        <td><button
+                                class="btn btn-primary"
+                                ng-click="removeStatus($index)">Usuń</button></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><button class="btn btn-secondary">Dodaj nowy status</button></td>
+                        <td><button class="btn btn-secondary" ng-click="addStatus()">Dodaj nowy status</button></td>
+                        <td>&nbsp;</td>
                     </tr>
                 </tfoot>
             </table>
@@ -36,27 +46,40 @@
                             <th>#</th>
                             <th>Nazwa</th>
                             <th>Cena (zł)</th>
+                            <th>Opcje</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="shipment in shipmentMethods">
-                            <td>{{$index+1}}</td>
+                        <tr ng-repeat="shipment in config.shipmentMethods">
+                            <td>{{ $index+1 }}</td>
                             <td>
                                 <div class="form-group has-feedback">
-                                    <input type="text" class="form-control" value="{{shipment.name}}">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            ng-change="logChanged()"
+                                            ng-model="shipment.name"
+                                            value="{{ shipment.name }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group has-feedback">
-                                    <input type="number" class="form-control" value="{{shipment.price}}">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            ng-change="logChanged()"
+                                            ng-model="shipment.price"
+                                            value="{{ shipment.price | number:2 }}">
                                 </div>
                             </td>
+                            <td><button class="btn btn-primary" ng-click="removeShipmentMethod($index)">Usuń</button></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><button class="btn btn-secondary">Dodaj nową metodę</button></td>
+                            <td><button class="btn btn-secondary" ng-click="addShipmentMethod()">Dodaj nową metodę</button></td>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                     </tfoot>
@@ -67,25 +90,25 @@
             <h4 class="red">Dane do płatności</h4>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group has-feedback">
-                    <label for="paymentName">Imię i nazwisko odbiorcy</label>
+                    <label for="paymentName">Imię i nazwisko</label>
                     <input type="text"
                            id="paymentName"
                            name="paymentName"
                            class="form-control"
-                           value="{{payment.name}}"
+                           value="{{ config.payment.name }}"
                            required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 street">
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                         <div class="form-group has-feedback">
                             <label for="paymentStreet">Ulica</label>
                             <input type="text"
                                    id="paymentStreet"
                                    name="paymentStreet"
                                    class="form-control"
-                                   value="{{payment.address.street}}"
+                                   value="{{ config.payment.address.street }}"
                                    required>
                         </div>
                     </div>
@@ -96,18 +119,18 @@
                                    id="paymentBuildingNumber"
                                    name="paymentBuildingNumber"
                                    class="form-control"
-                                   value="{{payment.address.buildingNumber}}"
+                                   value="{{ config.payment.address.buildingNumber }}"
                                    required>
                         </div>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3">
                         <div class="form-group has-feedback">
                             <label for="paymentFlatNumber">Nr mieszkania</label>
                             <input type="text"
                                    id="paymentFlatNumber"
                                    name="paymentFlatNumber"
                                    class="form-control"
-                                   value="{{payment.address.flatNumber}}"
+                                   value="{{ config.payment.address.flatNumber }}"
                                    required>
                         </div>
                     </div>
@@ -120,7 +143,7 @@
                            id="paymentPostalCode"
                            name="paymentPostalCode"
                            class="form-control"
-                           value="{{payment.address.postalCode}}"
+                           value="{{ config.payment.address.postalCode }}"
                            required>
                 </div>
             </div>
@@ -131,7 +154,7 @@
                            id="paymentCity"
                            name="paymentCity"
                            class="form-control"
-                           value="{{payment.address.city}}"
+                           value="{{ config.payment.address.city }}"
                            required>
                 </div>
             </div>
@@ -142,7 +165,7 @@
                            id="paymentAccount"
                            name="paymentAccount"
                            class="form-control"
-                           value="{{payment.account}}"
+                           value="{{ config.payment.account }}"
                            required>
                 </div>
             </div>
