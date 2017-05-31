@@ -1,5 +1,5 @@
 <div id="configView" class="container">
-    <form name="configForm" novalidate>
+    <form name="configForm" ng-submit="saveConfig()" novalidate>
         <div class="row">
             <h4 class="red">Statusy</h4>
             <table id="statusesTable" class="table table-striped">
@@ -170,5 +170,6 @@
                 </div>
             </div>
         </div>
+        <button type="submit" class="btn btn-primary">Zapisz konfigurację</button>
     </form>
 </div>

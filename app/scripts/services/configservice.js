@@ -2,30 +2,25 @@
 
 /**
  * @ngdoc service
- * @name supermiodek.orderservice
+ * @name supermiodek.configService
  * @description
- * # orderservice
+ * # configService
  * Service in the supermiodek.
  */
 angular.module('supermiodek')
-    .factory('orderService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {
-        return $resource(RESOURCES.api + 'order/', {}, {
+    .factory('configService', ['$resource', 'RESOURCES', function($resource, RESOURCES) {
+        return $resource(RESOURCES.api + 'config/', {}, {
             'get': {
-                url: RESOURCES.api + 'orders/',
+                // url: RESOURCES.api + 'orders/',
                 method: 'GET'
             },
             'save': {
                 method: 'POST'
             },
-            'getOne': {
-                url: RESOURCES.api + 'order/:id',
-                method: 'GET',
-                params: {id: '@id'}
-            },
             'update': {
-                url: RESOURCES.api + 'order/:id',
+                // url: RESOURCES.api + 'order/:id',
                 method: 'PUT',
-                params: {id: ':id'}
+                // params: {id: ':id'}
             },
             'remove': {
                 url: RESOURCES.api + 'order/:id',

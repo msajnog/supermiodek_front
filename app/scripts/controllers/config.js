@@ -8,7 +8,7 @@
  * Controller of the filmwebFrontApp
  */
 angular.module('supermiodek')
-    .controller('ConfigCtrl', ['$scope', function ($scope) {
+    .controller('ConfigCtrl', ['$scope', 'configService', function ($scope, configService) {
 
         $scope.config = {
             statuses: [
@@ -19,12 +19,10 @@ angular.module('supermiodek')
             ],
             shipmentMethods: [
                 {
-                    _id: '1',
                     name: 'Kurier',
                     price: 13.00
                 },
                 {
-                    _id: '2',
                     name: 'Poczta Polska',
                     price: 8.50
                 }
@@ -63,4 +61,10 @@ angular.module('supermiodek')
             console.log('shipmentMethods', $scope.config.shipmentMethods);
         };
 
+        $scope.saveConfig = function () {
+            console.log('saveConfig');
+            configService.save($scope.config, function (response) {
+                console.log('save response', response);
+            });
+        };
     }]);
