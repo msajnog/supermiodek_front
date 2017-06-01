@@ -18,12 +18,12 @@
                                 <input
                                         type="text"
                                         class="form-control"
-                                        ng-change="logChanged()"
                                         ng-model="status.name"
                                         value="{{ status.name }}">
                             </div>
                         </td>
                         <td><button
+                                type="button"
                                 class="btn btn-primary"
                                 ng-click="removeStatus($index)">Usuń</button></td>
                     </tr>
@@ -31,7 +31,10 @@
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><button class="btn btn-secondary" ng-click="addStatus()">Dodaj nowy status</button></td>
+                        <td><button
+                                type="button"
+                                class="btn btn-secondary"
+                                ng-click="addStatus()">Dodaj nowy status</button></td>
                         <td>&nbsp;</td>
                     </tr>
                 </tfoot>
@@ -57,7 +60,6 @@
                                     <input
                                             type="text"
                                             class="form-control"
-                                            ng-change="logChanged()"
                                             ng-model="shipment.name"
                                             value="{{ shipment.name }}">
                                 </div>
@@ -67,18 +69,23 @@
                                     <input
                                             type="text"
                                             class="form-control"
-                                            ng-change="logChanged()"
                                             ng-model="shipment.price"
                                             value="{{ shipment.price | number:2 }}">
                                 </div>
                             </td>
-                            <td><button class="btn btn-primary" ng-click="removeShipmentMethod($index)">Usuń</button></td>
+                            <td><button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    ng-click="removeShipmentMethod($index)">Usuń</button></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><button class="btn btn-secondary" ng-click="addShipmentMethod()">Dodaj nową metodę</button></td>
+                            <td><button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    ng-click="addShipmentMethod()">Dodaj nową metodę</button></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>

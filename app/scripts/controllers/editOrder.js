@@ -8,23 +8,30 @@
  * Controller of the supermiodek
  */
 angular.module('supermiodek')
-    .controller('EditOrderCtrl', ['$scope', 'orderService', 'productService', '$stateParams', 'RESOURCES',
-    function($scope, orderService, productService, $stateParams, RESOURCES) {
+    .controller('EditOrderCtrl', ['$scope', 'orderService', 'productService', 'configService', '$stateParams', 'RESOURCES',
+    function($scope, orderService, productService, configService, $stateParams, RESOURCES) {
         $scope.product = {};
         $scope.domain = RESOURCES.domain;
-        $scope.statuses = ['Nowe', 'Przyjęte', 'W trakcie realizacji', 'Zakończone'];
-        $scope.shipmentMethods = [
-            {
-                _id: '1',
-                name: 'Kurier',
-                price: 13.00
-            },
-            {
-                _id: '2',
-                name: 'Poczta Polska',
-                price: 8.50
-            }
-        ];
+        // $scope.statuses = ['Nowe', 'Przyjęte', 'W trakcie realizacji', 'Zakończone'];
+        // $scope.shipmentMethods = [
+        //     {
+        //         _id: '1',
+        //         name: 'Kurier',
+        //         price: 13.00
+        //     },
+        //     {
+        //         _id: '2',
+        //         name: 'Poczta Polska',
+        //         price: 8.50
+        //     }
+        // ];
+
+        configService.get(function(res) {
+            $scope.config = res.data;
+            $scope.statuses = res.data.statuses;
+            $scope.shipmentMethods = res.data.shipmentMethods;
+        });
+
 
         productService.get(function(response) {
             if (response.data) {

@@ -44,7 +44,7 @@
                 <div class="form-group has-deefback">
                     <label for="status" class="control-label">Status</label>
                     <select id="status" class="form-control" name="" ng-model="order.status">
-                        <option ng-repeat="status in statuses" value="{{status}}">{{status}}</option>
+                        <option ng-repeat="status in statuses" value="{{status.name}}">{{status.name}}</option>
                     </select>
                 </div>
             </div>
