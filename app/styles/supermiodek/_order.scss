@@ -1,0 +1,55 @@
+#ordersTable {
+    margin-top: 30px;
+
+    th:not(:last-child) {
+        transition: color .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: $blue;
+        }
+
+        .sortorder {
+            &:after {
+                content: '\25b2';
+            }
+
+            &.reverse:after {
+                content: '\25bc';
+            }
+        }
+    }
+
+    td:not(:last-child) {
+        vertical-align: middle;
+    }
+}
+
+#editOrderForm {
+    h4 {
+        text-align: center;
+    }
+
+    ul.products-list {
+        text-align: center;;
+
+        li {
+            float: none;
+            display: inline-block;
+        }
+    }
+
+    p.total {
+        font-size: 2.0rem;
+        text-transform: uppercase;
+        padding: 20px 0;
+        border-top: 1px solid $grey;
+        border-bottom: 1px solid $grey;
+        margin: 10px 0;
+    }
+
+    button[type="submit"] {
+        display: block;
+        margin: 0 auto;
+    }
+}

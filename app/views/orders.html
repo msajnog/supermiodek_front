@@ -38,12 +38,18 @@
                 <tr ng-repeat="order in orders | orderBy : propertyName : reverse">
                     <td><a href="#/order/{{order._id}}">{{order.client.surname}} {{order.client.name}}</a></td>
                     <td>{{order.date | date:'medium'}}</td>
-                    <td>{{order.status}}</td>
+                    <td ng-repeat="status in order.status"
+                        ng-if="status.selected">{{status.name}}
+                    </td>
                     <td>{{order.productsTotal | currency}}</td>
-                    <td>{{order.shipment.name}}</td>
+                    <td ng-repeat="shipment in order.shipments"
+                        ng-if="shipment.selected">{{shipment.name}}
+                    </td>
                     <td>
                         <a href="#/order/{{order._id}}" class="btn btn-secondary btn-small">Edytuj</a>
-                        <button type="button" class="btn btn-primary btn-small" ng-click="remove(order._id, $index)">Usuń</button>
+                        <button type="button" class="btn btn-primary btn-small" ng-click="remove(order._id, $index)">
+                            Usuń
+                        </button>
                     </td>
                 </tr>
             </table>

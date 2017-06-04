@@ -54,7 +54,13 @@
                         <div class="col-xs-3" ng-repeat="method in shipmentMethods">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="shipment" value="{{method.name}}" ng-click="chooseShipmentMethod(method._id)" ng-checked="method._id === order.shipment._id"> {{method.name}} {{method.price | currency}}
+                                    <input
+                                            type="radio"
+                                            name="shipment"
+                                            value="{{method.name}}"
+                                            ng-click="chooseShipmentMethod(method._id)"
+                                            ng-checked="method._id === order.shipment._id">
+                                    {{method.name}} {{method.price | currency}}
                                 </label>
                             </div>
                         </div>
