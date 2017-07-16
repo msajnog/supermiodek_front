@@ -110,6 +110,12 @@ section {
     padding: 90px 0;
 
     .welcome-section {
+      text-align: center;
+      margin-bottom: 50px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        margin-bottom: 0;
+      }
       .desc {
         font-family: $secondary-font;
         font-size: 1.6rem;
@@ -220,13 +226,23 @@ section {
 }
 
 .events {
-  p {
-    font-family: $secondary-font;
+  article {
+    margin-bottom: 50px;
+
+    @media screen and (min-width: $screen-md-min) {
+      margin-bottom: 0;
+    }
+
+    p {
+      font-family: $secondary-font;
+    }
   }
 }
 
 .gallery {
+  text-align: center;
   .img {
+    display: inline-block;
     position: relative;
     margin: 15px 0;
     overflow: hidden;
@@ -310,4 +326,8 @@ section {
       animation: spinner .6s linear infinite;
     }
   }
+}
+
+.logout-btn {
+  padding: 5px 10px;
 }

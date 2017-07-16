@@ -29,16 +29,17 @@
                     </div>
 
                     <div class="collapse navbar-collapse navbar-right" id="adminMobileMenu">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav" ng-controller="InsideCtrl">
                             <li><a ui-sref="orders">Zamówienia</a></li>
                             <li><a ui-sref="products">Produkty</a></li>
                             <li><a ui-sref="config">Konfiguracja</a></li>
+                            <li ng-if="authorized"><button type="button" ng-click="logout()" class="btn btn-danger logout-btn">Wyloguj</button></li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <nav class="navbar navbar-default navbar-fixed-top" ng-if="!$state.current.data.adminPage" ng-cloak>
+            <nav class="navbar navbar-default navbar-fixed-top public" ng-if="!$state.current.data.adminPage" ng-cloak>
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
@@ -52,7 +53,6 @@
 
                     <div class="collapse navbar-collapse" id="mainNav">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a ui-sref="/">Home</a></li>
                             <li><a ui-sref="#">Produkty</a></li>
                             <li><a ui-sref="shop">Sklep</a></li>
                             <li><a ui-sref="#">Galeria</a></li>
@@ -122,9 +122,12 @@
         <script src="scripts/controllers/orders.js"></script>
         <script src="scripts/controllers/editOrder.js"></script>
         <script src="scripts/controllers/config.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/inside.js"></script>
         <script src="scripts/services/productservice.js"></script>
         <script src="scripts/services/orderservice.js"></script>
         <script src="scripts/services/configservice.js"></script>
+        <script src="scripts/services/authservice.js"></script>
         <script src="scripts/directives/thumb.js"></script>
         <script src="scripts/directives/loading.js"></script>
         <!-- endbuild -->

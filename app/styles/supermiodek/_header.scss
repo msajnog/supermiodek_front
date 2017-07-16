@@ -1,6 +1,6 @@
 header {
      #headerTop {
-         height: 70px;
+         height: 80px;
          background: $beige;
 
          a {
@@ -64,6 +64,48 @@ header {
                     &.active {
                         a {
                             background: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .navbar-toggle {
+            margin-top: 18px;
+        }
+
+        &.public {
+            .navbar-collapse {
+                max-height: none;
+                background: $red;
+                border-top: 0;
+                ul {
+                    margin-top: 0;
+                    margin-bottom: 0;
+
+                    li {
+                        display: block;
+                        font-size: 0;
+                        @extend .transition;
+
+                        @media screen and (min-width: $screen-sm-min) {
+                            display: inline-block;
+                        }
+
+                        a {
+                            font-size: 2rem;
+
+                            @media screen and (min-width: $screen-md-min) {
+                                font-size: 2.4rem;
+                            }
+                        }
+
+
+                        &:hover {
+                            background: $blue;
+                            a {
+                                color: #fff;
+                            }
                         }
                     }
                 }

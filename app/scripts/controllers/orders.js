@@ -22,9 +22,9 @@ angular.module('supermiodek')
                 $scope.propertyName = propertyName;
             };
 
-            $scope.remove = function (id, idx) {
+            $scope.remove = function (id) {
                 if (confirm('Czy jesteś pewny?')) {
-                    orderService.remove({id: id}, function (res) {
+                    orderService.remove({id: id}, function () {
                         $scope.orders = $scope.orders.filter(function (product) {
                             return product._id !== id;
                         });

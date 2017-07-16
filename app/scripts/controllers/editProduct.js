@@ -50,7 +50,7 @@ angular.module('supermiodek')
                 });
             };
 
-            $scope.uploader.onError = function(err) {
+            $scope.uploader.onError = function() {
                 return;
             };
 

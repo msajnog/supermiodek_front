@@ -18,19 +18,6 @@ angular
             restrict: 'A',
             template: '<canvas/>',
             link: function(scope, element, attributes) {
-                if (!helper.support) { return; }
-
-                var params = scope.$eval(attributes.ngThumb);
-
-                if (!helper.isFile(params.file)) { return; }
-                if (!helper.isImage(params.file)) { return; }
-
-                var canvas = element.find('canvas');
-                var reader = new FileReader();
-
-                reader.onload = onLoadFile;
-                reader.readAsDataURL(params.file);
-
                 function onLoadFile(event) {
                     var img = new Image();
                     img.onload = onLoadImage;
@@ -43,6 +30,19 @@ angular
                     canvas.attr({ width: width, height: height });
                     canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
                 }
+
+                if (!helper.support) { return; }
+
+                var params = scope.$eval(attributes.ngThumb);
+
+                if (!helper.isFile(params.file)) { return; }
+                if (!helper.isImage(params.file)) { return; }
+
+                var canvas = element.find('canvas');
+                var reader = new FileReader();
+
+                reader.onload = onLoadFile;
+                reader.readAsDataURL(params.file);
             }
         };
     }]);
