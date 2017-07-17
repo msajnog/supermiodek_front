@@ -89,6 +89,40 @@
 
         <ui-view></ui-view>
 
+        <footer ng-controller="ContactCtrl">
+            <div class="container">
+                <form ng-submit="sendQuestion()" novalidate>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                            <h3>Kontakt</h3>
+                            <div class="form-group has-feedback">
+                                <label for="contactEmail" class="control-label">Adres e-mail</label>
+                                <input type="email" name="contactEmail" id="contactEmail" ng-model="contact.email" class="form-control" required>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="contactName" class="control-label">Imię i nazwisko</label>
+                                <input type="text" name="contactName" id="contactName" ng-model="contact.name" class="form-control" required>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="contactSubject" class="control-label">Temat</label>
+                                <input type="text" name="contactSubject" id="contactSubject" ng-model="contact.subject" class="form-control" required>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="contact.sendCopy"> Wyślij kopię na mój adres
+                                </label>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="contactContent" class="control-label">Temat</label>
+                                <textarea name="contactContent" id="contactContent" ng-model="contact.content" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">Wyślij</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </footer>
+
         <div class="loading-spinner-holder" data-loading ><div class="spinner"></div></div>
 
 
@@ -124,10 +158,12 @@
         <script src="scripts/controllers/config.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/inside.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
         <script src="scripts/services/productservice.js"></script>
         <script src="scripts/services/orderservice.js"></script>
         <script src="scripts/services/configservice.js"></script>
         <script src="scripts/services/authservice.js"></script>
+        <script src="scripts/services/contactservice.js"></script>
         <script src="scripts/directives/thumb.js"></script>
         <script src="scripts/directives/loading.js"></script>
         <!-- endbuild -->
