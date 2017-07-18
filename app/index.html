@@ -91,32 +91,82 @@
 
         <footer ng-controller="ContactCtrl">
             <div class="container">
-                <form ng-submit="sendQuestion()" novalidate>
+                <form name="contactForm" ng-submit="sendQuestion()" novalidate>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
                             <h3>Kontakt</h3>
-                            <div class="form-group has-feedback">
-                                <label for="contactEmail" class="control-label">Adres e-mail</label>
-                                <input type="email" name="contactEmail" id="contactEmail" ng-model="contact.email" class="form-control" required>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': contactForm.contactName.$dirty && contactForm.contactName.$error.required, 'has-success': contactForm.contactName.$dirty && !contactForm.contactName.$error.required}">
+                                        <label for="contactName" class="control-label">Imię i nazwisko<em>*</em></label>
+                                        <input type="text" name="contactName" id="contactName" ng-model="contact.name" class="form-control" required>
+                                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactName.$dirty && !contactForm.contactName.$error.required"></span>
+                                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactName.$dirty && contactForm.contactName.$error.required"></span>
+                                        <span class="error-msg" ng-show="contactForm.contactName.$dirty && contactForm.contactName.$error.required">To pole jest wymagane</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': contactForm.contactEmail.$dirty && (contactForm.contactEmail.$error.required || contactForm.contactEmail.$error.email), 'has-success': contactForm.contactEmail.$dirty && !contactForm.contactEmail.$error.required}">
+                                        <label for="contactEmail" class="control-label">Adres e-mail<em>*</em></label>
+                                        <input type="email" name="contactEmail" id="contactEmail" ng-model="contact.email" class="form-control" required>
+                                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactEmail.$dirty && !contactForm.contactEmail.$error.required"></span>
+                                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.required"></span>
+                                        <span class="error-msg" ng-show="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.required">To pole jest wymagane</span>
+                                        <span class="error-msg" ng-show="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.email">Nieprawidłowy format</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': contactForm.contactPhone.$dirty && (contactForm.contactPhone.$error.required || !contactForm.contactPhone.$valid), 'has-success': contactForm.contactPhone.$dirty && !contactForm.contactPhone.$error.required}">
+                                        <label for="contactPhone" class="control-label">Numer telefonu</label>
+                                        <input type="tel" name="contactPhone" id="contactPhone" ng-model="contact.phone" ng-pattern="'\\d+'" class="form-control">
+                                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactPhone.$dirty && !contactForm.contactPhone.$error.required"></span>
+                                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactPhone.$dirty && contactForm.contactPhone.$error.required"></span>
+                                        <span class="error-msg"
+                                              ng-show="contactForm.contactPhone.$dirty && contactForm.contactPhone.$error.required">To pole jest wymagane</span>
+                                        <span class="error-msg"
+                                              ng-show="contactForm.contactPhone.$dirty && !contactForm.contactPhone.$valid && !contactForm.contactPhone.$error.required">Nieprawidłowy format</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': contactForm.contactSubject.$dirty && contactForm.contactSubject.$error.required, 'has-success': contactForm.contactSubject.$dirty && !contactForm.contactSubject.$error.required}">
+                                        <label for="contactSubject" class="control-label">Temat<em>*</em></label>
+                                        <input type="text" name="contactSubject" id="contactSubject" ng-model="contact.subject" class="form-control" required>
+                                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactSubject.$dirty && !contactForm.contactSubject.$error.required"></span>
+                                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactSubject.$dirty && contactForm.contactSubject.$error.required"></span>
+                                        <span class="error-msg" ng-show="contactForm.contactSubject.$dirty && contactForm.contactSubject.$error.required">To pole jest wymagane</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': contactForm.contactContent.$dirty && contactForm.contactContent.$error.required, 'has-success': contactForm.contactContent.$dirty && !contactForm.contactContent.$error.required}">
+                                        <label for="contactContent" class="control-label">Treść<em>*</em></label>
+                                        <textarea name="contactContent" id="contactContent" ng-model="contact.content" class="form-control" required></textarea>
+                                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactContent.$dirty && !contactForm.contactContent.$error.required"></span>
+                                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"
+                                              ng-show="contactForm.contactContent.$dirty && contactForm.contactContent.$error.required"></span>
+                                        <span class="error-msg" ng-show="contactForm.contactContent.$dirty && contactForm.contactContent.$error.required">To pole jest wymagane</span>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="contact.sendCopy"> Wyślij kopię na mój adres
+                                        </label>
+                                    </div>
+                                    <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-secondary">Wyślij</button>
+                                </div>
                             </div>
-                            <div class="form-group has-feedback">
-                                <label for="contactName" class="control-label">Imię i nazwisko</label>
-                                <input type="text" name="contactName" id="contactName" ng-model="contact.name" class="form-control" required>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="contactSubject" class="control-label">Temat</label>
-                                <input type="text" name="contactSubject" id="contactSubject" ng-model="contact.subject" class="form-control" required>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" ng-model="contact.sendCopy"> Wyślij kopię na mój adres
-                                </label>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="contactContent" class="control-label">Temat</label>
-                                <textarea name="contactContent" id="contactContent" ng-model="contact.content" class="form-control" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-secondary">Wyślij</button>
                         </div>
                     </div>
                 </form>

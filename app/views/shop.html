@@ -49,7 +49,7 @@
             <div class="col-xs-12  col-sm-6">
                 <div class="form-group has-feedback"
                      ng-class="{'has-error': placeOrderForm.phone.$dirty && (placeOrderForm.phone.$error.required || !placeOrderForm.phone.$valid), 'has-success': placeOrderForm.phone.$dirty && !placeOrderForm.phone.$error.required}">
-                    <label for="phone" class="control-label">Telefon<em>*</em></label>
+                    <label for="phone" class="control-label">Numer telefonu<em>*</em></label>
                     <input id="phone" name="phone" type="tel" ng-model="order.client.phone" ng-pattern="'\\d+'"
                            class="form-control" placeholder="Telefon" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
