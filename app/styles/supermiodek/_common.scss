@@ -185,20 +185,22 @@ section {
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(205, 182, 34, 0.8);
     }
 
-    a.img {
+    .img {
       display: block;
       text-align: center;
       padding: 10px;
       @extend .transition;
+      cursor: default;
 
       &:hover {
         border-color: $red;
       }
     }
 
-    a.name {
+    .name {
       display: block;
       font-size: 2.2rem;
+      color: $blue;
       margin: 10px 0 5px 0;
     }
 

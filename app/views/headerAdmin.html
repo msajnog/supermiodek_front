@@ -1,0 +1,22 @@
+<nav id="headerTop"  class="navbar navbar-default navbar-fixed-top" ng-if="$state.current.data.adminPage" ng-cloak>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#adminMobileMenu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand" title="Powrót do sklepu"><img src="/images/logo.png" alt="Supermiodek.pl"> Supermiodek</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right" id="adminMobileMenu">
+            <ul class="nav navbar-nav" ng-controller="InsideCtrl">
+                <li><a ui-sref="orders">Zamówienia</a></li>
+                <li><a ui-sref="products">Produkty</a></li>
+                <li><a ui-sref="config">Konfiguracja</a></li>
+                <li ng-if="authorized"><button type="button" ng-click="logout()" class="btn btn-danger logout-btn">Wyloguj</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>

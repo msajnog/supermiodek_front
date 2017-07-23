@@ -85,7 +85,8 @@ angular.
         controller: 'LoginCtrl',
         data: {
             loadMainBanner: false,
-            adminPage: false
+            adminPage: false,
+            removeFooter: true
         }
     });
 

@@ -61,19 +61,19 @@
     </div>
 </section>
 
-<section id="anchorproducts" class="main-page-section products-section" ng-controller="ShopCtrl">
+<section id="anchorProducts" class="main-page-section products-section" ng-controller="ShopCtrl">
     <div class="container">
         <h3>Produkty</h3>
         <div class="row">
             <ul class="products-list">
                 <li class="col-xs-12 col-sm-6 col-md-3 product-item" ng-repeat="product in products">
-                    <a href="#" class="img"><img src="{{domain}}{{product.image}}" alt="{{product.name}}" /></a>
-                    <a href="#" class="name">{{product.name}}</a>
+                    <div class="img"><img src="{{domain}}{{product.image}}" alt="{{product.name}}" /></div>
+                    <div class="name">{{product.name}}</div>
                     <div class="short-desc">{{product.shortDescription}}</div>
                 </li>
             </ul>
         </div>
-        <a href="#/shop" class="btn btn-primary place-order">Złóż zamówienie</a>
+        <a ui-sref="shop" class="btn btn-primary place-order">Złóż zamówienie</a>
     </div>
 </section>
 
@@ -109,7 +109,7 @@
     </div>
 </section>
 
-<section class="main-page-section gallery">
+<section id="anchorGallery" class="main-page-section gallery">
     <div class="container">
         <h3>Galeria</h3>
         <div class="row">
